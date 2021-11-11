@@ -1,0 +1,19 @@
+Proyecto - MinTic - Ciclo 4
+
+Descripción del Proyecto:
+
+Proyecto enfocado en el desarrollo de Software, buscando una solucion para la integracion de un sistema de informacion
+que soporte la gestión de proyectos de investigación, se pretende utilizar herramientas como React, 
+MongoDB, Html, CSS, JavaScript, GraphQL, Apollo, Git y Express
+
+
+Descripción de Integrantes:
+
+- SCRUM MASTER
+
+Soy Johan Forero, tengo 21 años, vivo en Funza, Cundinamarca.
+Soy ingeniero de Sistemas graduado de la Universidad de Cundinamarca, 
+tengo conocimientos en lenguajes de programación como Java, C#, PHP,
+Python y Javascript, también poseo conocimientos en Html, css, git para
+el control de versiones, trabajo frameworks como vue.js, react y angular, por último
+poseo conocimientos en desarrollo de videojuegos con Unity y desarrollo de interfaces con Adobe XD.
