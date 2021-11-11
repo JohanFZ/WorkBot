@@ -24,3 +24,12 @@ Saludos, mi nombre es Adolfo Valdivieso, tengo 25 años, vivo en Cali, Valle del
 Soy tecnico en ciencias naturales, tecnologo en programacion y estudiante de 10 semestre en Ingenieria informatica,
 tengo conocimientos en lenguajes como Python, PHP, Prolog, Javascript y SQL.
 Tambien conocimientos basico en frameworks como Flask, Laravel y la libreria React.
+
+- DESARROLLADOR
+
+Mi nombre es Daniel Moreno, tengo 27 años, vivo en Bogotá D.C.
+Tengo un magister en ingeniería electrónica de la Pontificia Universidad Javeriana,
+Mis mayores conocimientos en programación son en C/C++ para la programación de sistemas embebidos.
+Hace un par de años he estado apasionado en aprender nuevos lenguajes de programación como lo son Python y Javascript. 
+He trabajado con bases de datos en SQL y NoSQL en diferentes proyectos web donde se han usado diferentes frameworks 
+como React, Django y herramientas en la nube de Microsft Azure y/o AWS
