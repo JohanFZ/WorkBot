@@ -17,3 +17,10 @@ tengo conocimientos en lenguajes de programación como Java, C#, PHP,
 Python y Javascript, también poseo conocimientos en Html, css, git para
 el control de versiones, trabajo frameworks como vue.js, react y angular, por último
 poseo conocimientos en desarrollo de videojuegos con Unity y desarrollo de interfaces con Adobe XD.
+
+- ADMINISTRADOR de BD
+
+Saludos, mi nombre es Adolfo Valdivieso, tengo 25 años, vivo en Cali, Valle del cauca.
+Soy tecnico en ciencias naturales, tecnologo en programacion y estudiante de 10 semestre en Ingenieria informatica,
+tengo conocimientos en lenguajes como Python, PHP, Prolog, Javascript y SQL.
+Tambien conocimientos basico en frameworks como Flask, Laravel y la libreria React.
