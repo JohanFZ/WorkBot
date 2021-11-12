@@ -33,3 +33,11 @@ Mis mayores conocimientos en programación son en C/C++ para la programación de
 Hace un par de años he estado apasionado en aprender nuevos lenguajes de programación como lo son Python y Javascript. 
 He trabajado con bases de datos en SQL y NoSQL en diferentes proyectos web donde se han usado diferentes frameworks 
 como React, Django y herramientas en la nube de Microsft Azure y/o AWS
+
+- PRODUCT OWNER
+
+Soy Johan reyes, tengo 21 años, vivo en Funza, Cundinamarca.
+Soy técnico y Tecnólogo del SENA, tengo conocimientos en mantenimiento
+de distintos equipos tanto de Hardware como de Software, tengo conocimiento
+en servidores, electronica, electricidad, en cuanto a programacion cuento con
+los conocimientos adquiridos en este curso los cuales son phyton, java, JavaScript, css.
