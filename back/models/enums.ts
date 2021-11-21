@@ -12,7 +12,13 @@ enum Enum_EstadoUsuario {
   noAutorizado = "No Autorizado"
 }
 
+ enum Enum_EstadoInscripcion {
+   aceptada = 'aceptada',
+   rechazada = 'rechazada',
+ }
+
 export {
   Enum_Rol,
   Enum_EstadoUsuario,
+  Enum_EstadoInscripcion,
 }
