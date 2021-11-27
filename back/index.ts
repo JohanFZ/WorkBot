@@ -1,73 +1,30 @@
-import conectarBD from "./db/db";
-import { Enum_Rol } from "./models/enums";
-import { UserModel } from "./models/user";
+import express from 'express';
+import cors from 'cors'; //permite que se hagan peticiones por medio de diversos dominios
+import { ApolloServer } from 'apollo-server-express';
 import dotenv from 'dotenv'; //manejar variables de entorno
+import conectarBD from './db/db';
+// import { types } from './graphql/types';
+// import { resolvers } from './graphql/resolvers';
 
 dotenv.config();
 
-const crearUsuario = async () => {
-  await UserModel.create({
-    correo: "johanfore67@gmail.com",
-    identificacion: "1007445878",
-    nombre: "Johan",
-    apellido: "Orozco",
-    rol: Enum_Rol.administrador,
-  })
-    .then(u => {
-      console.log("Usuario Creado", u);
-    })
-    .catch((e) => {
-      console.error("Error al crear el usuario", e);
-    });
-}
+const server = new ApolloServer({
+  // typeDefs: types,
+  // resolvers: resolvers,
+})
 
-const editarUsuario = async () => {
-  await UserModel.findOneAndUpdate({ correo: "johanfore67@gmail.com" }, {
-    nombre: 'Alexander',
-    apellido: 'Orozco'
-  })
-    .then((u) => {
-      console.log("Usuario Actualizado", u);
-    })
-    .catch((e) => {
-      console.error("Error al actualizar el usuario", e);
-    })
-}
+const app = express();
 
-const eliminarUsuario = async () => {
-  await UserModel.findOneAndDelete({ correo: 'johanfore67@gmail.com' })
-    .then((u) => {
-      console.log("Usuario Eliminado", u);
-    })
-    .catch((e) => {
-      console.error("Usuario no Eliminado", e);
-    })
-}
+app.use(express.json());
 
-const obtenerUsuarios = async () => {
-  await UserModel.find()
-    .then((u) => {
-      console.log("usuarios", u);
-    })
-    .catch((e) => {
-      console.error("Error obteniendo los usuarios", e);
-    })
-}
+app.use(cors());
 
-const obtenerUsuario = async () => {
-  await UserModel.findOne({ correo: 'johanfore67@gmail.com' })
-    .then((u) => {
-      console.log("Usuario Encontrado", u);
-    })
-    .catch((e) => {
-      console.error("Error en la busqueda", e);
-    })
-}
-
-const main = async () => {
+app.listen({ port: process.env.PORT || 4000 }, async () => {
   await conectarBD();
+  await server.start();
 
-  // crearUsuario();
-}
+  server.applyMiddleware({ app });
 
-main();
+  console.log("Servidor Listo");
+
+});

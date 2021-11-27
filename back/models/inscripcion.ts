@@ -1,6 +1,6 @@
 import { Schema, model } from 'mongoose';
-import { Enum_EstadoInscripcion } from "./enums";
-import {UserModel} from "./user";
+import { Enum_EstadoInscripcion } from "./enums/enums";
+import {UserModel} from "./users/user";
 
 interface Inscription {
   estado: Enum_EstadoInscripcion;
