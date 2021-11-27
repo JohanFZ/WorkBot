@@ -1,46 +1,48 @@
 //Enums User
 
 enum Enum_Rol {
-  estudiante = "Estudiante",
-  lider = "Líder",
-  administrador = "Administrador",
+  ESTUDIANTE = "ESTUDIANTE",
+  LIDER = "LIDER",
+  ADMINISTRADOR = "ADMINISTRADOR"
 }
+
 
 enum Enum_EstadoUsuario {
-  pendiente = "Pendiente",
-  autorizado = "Autorizado",
-  noAutorizado = "No Autorizado"
+  PENDIENTE = "PENDIENTE",
+  AUTORIZADO = "AUTORIZADO",
+  NO_AUTORIZADO = "NO_AUTORIZADO",
 }
 
- enum Enum_EstadoInscripcion {
-   aceptada = 'aceptada',
-   rechazada = 'rechazada',
- }
+//Enums Proyect
 
-//Project Enums
+enum Enum_EstadoProyecto {
+  ACTIVO = "ACTIVO",
+  INACTIVO = "INACTIVO"
+}
 
-enum Enum_EstadoProyecto{
-  activo = "Activo",
-  inactivo = "Inactivo",
-};
+enum Enum_FaseProyecto {
+  INICIADO = "INICIADO",
+  DESARROLLO = "DESARROLLO",
+  TERMINADO = "TERMINADO",
+  NULO = ""
+}
 
-enum Enum_FaseProyecto{
-  iniciado = "Iniciado",
-  desarrollo = "Desarrollo",
-  terminado = "Terminado",
-  nula = "",
-};
+//Enums Objective
 
-enum Enum_TipoObjetivo{
-  general = "General", 
-  especifico = "Especifico",
-};
+enum Enum_TipoObjetivo {
+  GENERAL = "GENERAL",
+  ESPECIFICO = "ESPECIFICO"
+}
+
+//Enums Inscripcion
+
+enum Enum_EstadoInscripcion {
+  ACEPTADA = "ACEPTADA",
+  RECHAZADA = "RECHAZADA",
+  PENDIENTE = "PENDIENTE",
+}
 
 export {
-  Enum_Rol,
-  Enum_EstadoUsuario,
-  Enum_EstadoInscripcion,
-  Enum_EstadoProyecto,
-  Enum_FaseProyecto,
-  Enum_TipoObjetivo,
+  Enum_Rol, Enum_EstadoUsuario, Enum_EstadoProyecto,
+  Enum_FaseProyecto, Enum_TipoObjetivo, Enum_EstadoInscripcion
 }
