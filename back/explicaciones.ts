@@ -11,7 +11,7 @@ const crearUsuario = async () => {
     identificacion: "1007445878",
     nombre: "Johan",
     apellido: "Orozco",
-    rol: Enum_Rol.administrador,
+    rol: Enum_Rol.ADMINISTRADOR,
   })
     .then(u => {
       console.log("Usuario Creado", u);

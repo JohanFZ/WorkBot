@@ -4,7 +4,8 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "start": "ts-node index.ts"
+    "start": "ts-node index.ts",
+    "dev": "nodemon index.ts"
   },
   "dependencies": {
     "apollo-server-express": "^3.5.0",
@@ -13,6 +14,7 @@
     "express": "^4.17.1",
     "graphql": "^16.0.1",
     "mongoose": "^6.0.12",
+    "nodemon": "^2.0.15",
     "ts-node": "^10.4.0",
     "typescript": "^4.4.4"
   }
