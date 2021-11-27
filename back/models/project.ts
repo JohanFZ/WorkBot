@@ -39,12 +39,12 @@ const projectSchema = new Schema<Project>({
     estado: {
         type: String,
         enum: Enum_EstadoProyecto,
-        default: Enum_EstadoProyecto.inactivo,
+        default: Enum_EstadoProyecto.INACTIVO,
     },
     fase: {
         type: String,
         enum: Enum_FaseProyecto,
-        default: Enum_FaseProyecto.nula,
+        default: Enum_FaseProyecto.NULO,
     },
     lider: {
         type: Schema.Types.ObjectId,
@@ -72,5 +72,5 @@ const projectSchema = new Schema<Project>({
     ]
 });
 
-const ProjectModel = model("project", projectSchema);
+const ProjectModel = model("Project", projectSchema);
 export { ProjectModel };
