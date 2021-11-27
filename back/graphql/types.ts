@@ -8,4 +8,4 @@ const typesGlobals = gql`
 
 `;
 
-export const types = [typesGlobals, typesUser];
+export const types = [typesGlobals, typesUser, typesEnums];
