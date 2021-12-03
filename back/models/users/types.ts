@@ -8,13 +8,14 @@ const typesUser = gql`
     apellido: String!
     identificacion: String!
     correo: String!
-    rol: Enum_Rol!
-    estado: Enum_EstadoUsuario
+    rol: Enum_Rol
+    estado: Enum_EstadoUsuario!
   }
 
 
   type Query {
     Users: [User]
+    User(_id: String!): User
   }
 
   type Mutation {
@@ -36,8 +37,7 @@ const typesUser = gql`
       apellido: String!
       identificacion: String!
       correo: String!
-      rol: Enum_Rol!
-      estado: Enum_EstadoUsuario
+      estado: Enum_EstadoUsuario!
     ):User
   }
 `;
