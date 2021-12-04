@@ -40,7 +40,6 @@ type Proyecto{
 
 }
 
-
 type Query {
     Proyecto:[Proyecto]
     ProyectosLiderados(lider: String):[Proyecto]
@@ -58,7 +57,7 @@ type Mutation{
         lider: String!
         objetivos:[crearObjetivo]
     ):Proyecto
-    
+
     modificarProyecto(
         _id: String!
         camposPro: camposProyecto!
@@ -74,8 +73,6 @@ type Mutation{
         _id: String!
         campos:camposObjetivo!
     ):Proyecto
-
-    
 }
 `;
 

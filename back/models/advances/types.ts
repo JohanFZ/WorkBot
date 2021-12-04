@@ -26,6 +26,8 @@ const typesAdvancements= gql`
       proyecto: String!
     ):Advancement
 
+    eliminarAvance( _id: String ):Advancement
+
   }
 `;
 

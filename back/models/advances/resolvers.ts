@@ -24,6 +24,13 @@ const resolversAdvancement = {
 
       return avanceCreado;
     },
+
+    eliminarAvance: async (parent, args) => {
+      if (Object.keys(args).includes('_id')) {
+        const avanceEliminado = await advancementModel.findByIdAndDelete({ _id: args._id })
+        return avanceEliminado;
+      }
+    },
   }
 }
 
