@@ -8,7 +8,7 @@ const typesAdvancements= gql`
     descripcion: String!
     observaciones: [String]
     creadoPor: User!
-    proyecto: Project!
+    proyecto: Proyecto!
   }
 
   type Query {
