@@ -28,6 +28,15 @@ const typesAdvancements= gql`
 
     eliminarAvance( _id: String ):Advancement
 
+    editarAvance(
+      _id: String!,
+      fecha: Date!
+      descripcion: String!
+      observaciones: [String]
+      creadoPor: String!
+      proyecto: String!
+    ):Advancement
+
   }
 `;
 
