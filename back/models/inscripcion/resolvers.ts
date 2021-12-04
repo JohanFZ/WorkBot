@@ -3,7 +3,7 @@ import { InscriptionModel } from "./inscripcion";
 const resolverInscripciones = {
   Query: {
     Inscripciones: async (parent, args) => {
-      const inscripciones = await InscriptionModel.find().populate("estudiante");
+      const inscripciones = await InscriptionModel.find().populate("estudiante").populate("proyecto");
       return inscripciones;
     },
   },
@@ -11,7 +11,7 @@ const resolverInscripciones = {
     crearInscripcion: async (parent, args) => {
       const inscripcionCreada = await InscriptionModel.create({
         estado: args.estado,
-        //proyecto: args.proyecto,
+        proyecto: args.proyecto,
         estudiante: args.estudiante,
       });
        inscripcionCreada;
