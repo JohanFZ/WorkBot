@@ -6,6 +6,10 @@ const resolversAdvancement = {
       const advancements = await advancementModel.find().populate('creadoPor').populate('proyecto');
       return advancements;
     },
+    Advancement: async (parent, args) => {
+      const advancement = await advancementModel.findOne({ _id: args._id }).populate('creadoPor').populate('proyecto');
+      return advancement;
+    },
   },
 
   Mutation: {
