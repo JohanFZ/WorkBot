@@ -10,7 +10,7 @@ const resolversProyect = {
         ProyectosLiderados: async (parent, args) => {
             const proyectos = await ProjectModel.find({
                 lider: args.lider
-            });
+            }).populate("lider");
             return proyectos;
         },
 
