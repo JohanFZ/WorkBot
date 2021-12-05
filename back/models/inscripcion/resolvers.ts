@@ -1,4 +1,5 @@
 import { InscriptionModel } from "./inscripcion";
+import {Enum_EstadoInscripcion} from "../enums/enums"
 
 const resolverInscripciones = {
   Query: {
@@ -14,7 +15,27 @@ const resolverInscripciones = {
         proyecto: args.proyecto,
         estudiante: args.estudiante,
       });
-       inscripcionCreada;
+      return inscripcionCreada;
+    },
+    aprobarInscripcion: async (parent, args) => {    
+      const inscripcionAprobada = await InscriptionModel.findByIdAndUpdate(args.id,
+        {
+          estado: Enum_EstadoInscripcion.ACEPTADA,
+          //fechaIngreso: Date.now(),
+        },
+        { new: true }
+      );
+      return inscripcionAprobada;
+    },
+    rechazarInscripcion: async (parent, args) => {    
+      const inscripcionAprobada = await InscriptionModel.findByIdAndUpdate(args.id,
+        {
+          estado: Enum_EstadoInscripcion.RECHAZADA,
+          //fechaIngreso: Date.now(),
+        },
+        { new: true }
+      );
+      return inscripcionAprobada;
     }
   },
 };
