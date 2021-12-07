@@ -1,0 +1,27 @@
+.sidebar {
+  height: 100vh;
+}
+
+.sidebar-header {
+  text-align: center;
+  padding: 20px 20px 0 20px;
+}
+.sidebar-header img {
+  width: 100px;
+
+}
+
+.sidebar-header p {
+  color: #fff;
+  font-size: 20px;
+}
+
+.sidebar-footer {
+  padding: 5px;
+  text-align: center;
+}
+
+.sidebar-footer p {
+  color: #fff;
+  font-size: 12px;
+}
