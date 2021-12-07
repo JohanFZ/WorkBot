@@ -4,6 +4,7 @@ import { typesUser } from "../models/users/types";
 import { typesInscripcion } from "../models/inscripcion/types";
 import { typesProyect } from "../models/projects/types";
 import { typesAdvancements } from "../models/advances/types";
+import { typesAuth } from "./auth/types";
 
 const typesGlobals = gql`
 
@@ -17,5 +18,6 @@ export const types = [
   typesEnums,
   typesProyect,
   typesInscripcion,
-  typesAdvancements
+  typesAdvancements,
+  typesAuth
 ];

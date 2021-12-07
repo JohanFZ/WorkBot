@@ -27,6 +27,7 @@ const typesUser = gql`
       correo: String!
       rol: Enum_Rol!
       estado: Enum_EstadoUsuario
+      password: String!
     ):User
 
     eliminarUsuario( _id: String, correo: String):User
