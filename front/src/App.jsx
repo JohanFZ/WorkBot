@@ -8,7 +8,7 @@ import Index from './pages/Index';
 // import IndexCategory1 from './pages/category1/Index';
 // import Category1 from './pages/category1/CategoryPage1';
 import IndexUsuarios from 'pages/usuarios/Index';
-// import EditarUsuario from 'pages/usuarios/Editar';
+import EditarUsuario from 'pages/usuarios/Editar';
 // import AuthLayout from 'layouts/AuthLayout';
 // import Register from 'pages/auth/registro';
 
@@ -37,7 +37,7 @@ function App() {
           <Route path='/' element={<PrivateLayout />}>
             <Route path='' element={<Index />} />
             <Route path='/usuarios' element={<IndexUsuarios />} />
-            {/* <Route path='/usuarios/editar/:_id' element={<EditarUsuario />} /> */}
+            <Route path='/usuarios/editar/:_id' element={<EditarUsuario />} />
             {/* <Route path='page2' element={<Page2 />} /> */}
             {/* <Route path='category1' element={<IndexCategory1 />} /> */}
             {/* <Route path='category1/page1' element={<Category1 />} /> */}

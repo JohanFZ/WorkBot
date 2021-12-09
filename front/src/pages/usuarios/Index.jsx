@@ -10,7 +10,7 @@ import  { SpinnerLoading } from 'components/Spinner';
 
 const IndexUsuarios = () => {
 
-  const [dataQuery, setDataQuery] = useState([]);
+  const [dataQuery, setDataQuery] = useState(null);
   const [term, setTerm] = useState("");
 
   const { data, error, loading } = useQuery(GET_USUARIOS);
@@ -38,9 +38,12 @@ const IndexUsuarios = () => {
     <div>
       <div className='title'>
         <label>Listado de Usuarios</label>
-        <InputSearch
-        placeholder='Buscar usuario por identificación'
-        onChange={e => setTerm(e.target.value)}/>
+        {dataQuery && (
+          <InputSearch
+            placeholder='Buscar usuario por identificación'
+            onChange={e => setTerm(e.target.value)}
+          />
+        )}
       </div>
       <Table striped className='table'>
         <thead>
