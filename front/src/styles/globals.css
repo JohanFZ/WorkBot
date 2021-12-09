@@ -5,15 +5,23 @@
 }
 
 .content {
-  justify-content: center;
+  position: relative;
+  height: 100vh;
+  left: 260px;
+  /* justify-content: center;
   align-items: center;
-  align-content: center;
+  align-content: center; */
   text-align: center;
-  width: 100%;
+  width: calc(100% - 260px);
+}
+
+.register {
+  text-align: center;
 }
 
 .sidebar {
   height: 100vh;
+  position: fixed;
   font-family: 'Readex Pro', sans-serif;
 }
 
@@ -97,8 +105,14 @@
 }
 
 .select {
-  padding: 5px;
+  padding: 8px;
+  border-radius: 4px;
+  width: 300px;
   border: 1px solid #ced4da;
+}
+
+.select-content {
+  padding: 20px;
 }
 
 .button {

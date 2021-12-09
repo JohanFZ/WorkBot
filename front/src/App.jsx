@@ -9,8 +9,8 @@ import Index from './pages/Index';
 // import Category1 from './pages/category1/CategoryPage1';
 import IndexUsuarios from 'pages/usuarios/Index';
 import EditarUsuario from 'pages/usuarios/Editar';
-// import AuthLayout from 'layouts/AuthLayout';
-// import Register from 'pages/auth/registro';
+import AuthLayout from 'layouts/AuthLayout';
+import Register from 'pages/auth/registro';
 
 // Estilos
 
@@ -42,9 +42,9 @@ function App() {
             {/* <Route path='category1' element={<IndexCategory1 />} /> */}
             {/* <Route path='category1/page1' element={<Category1 />} /> */}
           </Route>
-          {/* <Route path="/auth" element={<AuthLayout />}>
+          <Route path="/auth" element={<AuthLayout />}>
             <Route path='register' element={<Register />} />
-          </Route> */}
+          </Route>
         </Routes>
       </BrowserRouter>
     </ApolloProvider>

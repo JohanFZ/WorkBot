@@ -1,7 +1,6 @@
 .table {
   width: 80%;
   margin: auto;
-  overflow-y: scroll;
 }
 
 .table thead {
