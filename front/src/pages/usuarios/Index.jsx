@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useQuery } from '@apollo/client';
 import { GET_USUARIOS } from 'graphql/usuarios/queries';
 import { toast } from 'react-toastify';
@@ -9,10 +9,21 @@ import { InputSearch } from 'components/InputSearch';
 import  { SpinnerLoading } from 'components/Spinner';
 
 const IndexUsuarios = () => {
+
+  const [dataQuery, setDataQuery] = useState([]);
+  const [term, setTerm] = useState("");
+
   const { data, error, loading } = useQuery(GET_USUARIOS);
+
+  function searchingUserperName(term) {
+    return function (x) {
+      return x.identificacion.includes(term) || !term;
+    }
+  }
 
   useEffect(() => {
     console.log('data servidor', data);
+    setDataQuery(data);
   }, [data]);
 
   useEffect(() => {
@@ -27,7 +38,9 @@ const IndexUsuarios = () => {
     <div>
       <div className='title'>
         <label>Listado de Usuarios</label>
-        <InputSearch placeholder='Buscar usuario por nombre o identificación'/>
+        <InputSearch
+        placeholder='Buscar usuario por identificación'
+        onChange={e => setTerm(e.target.value)}/>
       </div>
       <Table striped className='table'>
         <thead>
@@ -42,7 +55,7 @@ const IndexUsuarios = () => {
           </tr>
         </thead>
         <tbody>
-          {data && data.Users.map((u) => {
+          {dataQuery && dataQuery.Users.filter(searchingUserperName(term)).map((u) => {
             return (
               <tr key={u._id}>
                 <td>{u.nombre}</td>
