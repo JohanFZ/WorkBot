@@ -72,7 +72,7 @@ const EditarUsuario = () => {
           name='nombre'
           defaultValue={queryData.User.nombre}
           required={true}
-          // disabled={true}
+          readOnly={true}
         />
         <InputGlobal
           label='Apellido :'
@@ -80,7 +80,7 @@ const EditarUsuario = () => {
           name='apellido'
           defaultValue={queryData.User.apellido}
           required={true}
-          // disabled={true}
+          readOnly={true}
         />
         </div>
         <div>
@@ -90,7 +90,7 @@ const EditarUsuario = () => {
             name='correo'
             defaultValue={queryData.User.correo}
             required={true}
-            // disabled={true}
+            readOnly={true}
           />
           <InputGlobal
             label='Identificación :'
@@ -98,7 +98,7 @@ const EditarUsuario = () => {
             name='identificacion'
             defaultValue={queryData.User.identificacion}
             required={true}
-            // disabled={true}
+            readOnly={true}
           />
         </div>
         <div>

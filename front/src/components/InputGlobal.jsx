@@ -1,7 +1,7 @@
 import React from 'react';
 import { Input } from 'reactstrap';
 
-const InputGlobal = ({ label, name, defaultValue, type, required, disabled }) => {
+const InputGlobal = ({ label, name, defaultValue, type, required, readOnly }) => {
   return (
     <label htmlFor={name} className='my-3 input-global'>
       <p className='label'>{label}</p>
@@ -11,7 +11,7 @@ const InputGlobal = ({ label, name, defaultValue, type, required, disabled }) =>
         name={name}
         className='input'
         defaultValue={defaultValue}
-        disabled={disabled}
+        readOnly={readOnly}
       />
     </label>
   )

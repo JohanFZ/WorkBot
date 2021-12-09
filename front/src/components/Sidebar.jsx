@@ -17,10 +17,9 @@ const Sidebar = () => {
           <MenuItem icon={<FaHome />} suffix={<span className='badge-red'>'new'</span>}>Dashboard</MenuItem>
           <SubMenu title='Usuarios' icon={<FaUserAlt/>}>
             <MenuItem>
-              Listar Usuarios
+              Listar y Editar Usuarios
               <Link to="/usuarios" />
             </MenuItem>
-            <MenuItem>Actualizar Usuarios</MenuItem>
           </SubMenu>
           <SubMenu title='Proyectos' icon={<FaArchive />}>
             <MenuItem>Crear Proyectos</MenuItem>
