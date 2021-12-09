@@ -2,6 +2,7 @@ import { ProSidebar, Menu, MenuItem, SubMenu, SidebarHeader, SidebarContent, Sid
 import 'react-pro-sidebar/dist/css/styles.css';
 import logo from '../assets/logo512.png';
 import {FaUserAlt, FaHome, FaProjectDiagram, FaArchive, FaAddressBook } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
 
 const Sidebar = () => {
 
@@ -13,14 +14,19 @@ const Sidebar = () => {
       </SidebarHeader>
       <SidebarContent>
         <Menu iconShape='square'>
-          <MenuItem icon={<FaHome />}>Dashboard</MenuItem>
+          <MenuItem icon={<FaHome />} suffix={<span className='badge-red'>'new'</span>}>Dashboard</MenuItem>
           <SubMenu title='Usuarios' icon={<FaUserAlt/>}>
-            <MenuItem>Listar Usuarios</MenuItem>
+            <MenuItem>
+              Listar Usuarios
+              <Link to="/usuarios" />
+            </MenuItem>
             <MenuItem>Actualizar Usuarios</MenuItem>
           </SubMenu>
           <SubMenu title='Proyectos' icon={<FaArchive />}>
             <MenuItem>Crear Proyectos</MenuItem>
-            <MenuItem>Listar Proyectos</MenuItem>
+            <MenuItem>
+            Listar Proyectos
+            </MenuItem>
           </SubMenu>
           <SubMenu title='Avances' icon={<FaProjectDiagram />}>
             <MenuItem>Crear Avances</MenuItem>

@@ -1,3 +1,17 @@
+@import url('https://fonts.googleapis.com/css2?family=Readex+Pro:wght@200;600&display=swap');
+
+.main {
+  display: flex;
+}
+
+.content {
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  text-align: center;
+  width: 100%;
+}
+
 .sidebar {
   height: 100vh;
 }
@@ -6,9 +20,9 @@
   text-align: center;
   padding: 20px 20px 0 20px;
 }
+
 .sidebar-header img {
   width: 100px;
-
 }
 
 .sidebar-header p {
@@ -24,4 +38,12 @@
 .sidebar-footer p {
   color: #fff;
   font-size: 12px;
+}
+
+.sidebar .badge-red {
+  padding: 3px 6px;
+  font-size: 9px;
+  border-radius: 15px;
+  background: #d63030;
+  color: #fff;
 }

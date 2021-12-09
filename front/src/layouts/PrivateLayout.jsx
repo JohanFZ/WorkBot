@@ -6,13 +6,11 @@ import 'react-toastify/dist/ReactToastify.css';
 
 const PrivateLayout = () => {
   return (
-    <div>
+    <div className='main'>
       <Sidebar />
-      <div>
-        <div>
+        <div className='content'>
           <Outlet />
         </div>
-      </div>
       <ToastContainer />
     </div>
   );
