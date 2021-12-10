@@ -13,6 +13,12 @@ const resolversProyect = {
             }).populate("lider");
             return proyectos;
         },
+        ProyectoUnico: async (parent, args) =>{
+            const proyecto = await ProjectModel.findOne({
+                _id: args.id
+            }).populate("lider");
+            return proyecto;
+        },
 
     },
 

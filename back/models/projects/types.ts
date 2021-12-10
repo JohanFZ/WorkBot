@@ -43,6 +43,7 @@ type Proyecto{
 type Query {
     Proyecto:[Proyecto]
     ProyectosLiderados(lider: String):[Proyecto]
+    ProyectoUnico(id: String!): Proyecto
 }
 
 type Mutation{
