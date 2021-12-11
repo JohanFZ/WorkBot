@@ -22,7 +22,7 @@ const IndexUsuarios = () => {
   }
 
   useEffect(() => {
-    console.log('data servidor', data);
+    // console.log('data servidor', data);
     setDataQuery(data);
   }, [data]);
 

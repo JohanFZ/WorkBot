@@ -37,14 +37,14 @@ const Login = () => {
 
   return (
     <div className='login'>
-      <ParticlesBg color='#0d6efd' num={120} type='cobweb' bg={true} />
+      <ParticlesBg color='#0d6efd' num={100} type='cobweb' bg={true} />
       <h1 className='title'>Iniciar Sesión</h1>
       <form className='form' onSubmit={submitForm} onChange={updateFormData} ref={form}>
         <InputGlobal name='correo' type='email' label='Correo' required={true} />
         <InputGlobal name='password' type='password' label='Contraseña' required={true} />
         <ButtonLoading
           disabled={Object.keys(formData).length === 0}
-          // loading={loadingMutation}
+          loading={mutationLoading}
           text='Iniciar Sesión'
         />
       </form>
