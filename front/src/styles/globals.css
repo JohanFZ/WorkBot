@@ -41,16 +41,6 @@
   font-size: 20px;
 }
 
-.sidebar-footer {
-  padding: 5px;
-  text-align: center;
-}
-
-.sidebar-footer p {
-  color: #fff;
-  font-size: 12px;
-}
-
 .sidebar .badge-red {
   padding: 3px 6px;
   font-size: 9px;
@@ -58,6 +48,52 @@
   background: #d63030;
   color: #fff;
 }
+
+.sidebar-footer {
+  display: flex;
+  padding: 15px;
+}
+
+.sidebar-footer .info-user {
+  width: 170px;
+  line-height: 12px;
+}
+
+.sidebar-footer .info-user .username {
+  font-size: 22px;
+  color: #fff;
+  font-weight: 600;
+}
+
+.sidebar-footer .info-user .rol {
+  font-size: 14px;
+  line-height: 2px;
+}
+
+.sidebar-footer .info-user .profile {
+  font-size: 12px;
+  color: #fff;
+  text-decoration-color: #fff;
+}
+
+.sidebar-footer .info-user .logout {
+  align-items: center;
+}
+
+.sidebar-footer .logout {
+  color: #fff;
+  width: 60px;
+  align-self: center;
+  text-align: right;
+
+}
+
+li {
+  list-style: none;
+  text-decoration: underline #fff;
+}
+
+.sidebar
 
 /* Editar usuario */
 
