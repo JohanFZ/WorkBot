@@ -10,11 +10,12 @@ import { toast } from 'react-toastify';
 import { useMutation } from '@apollo/client';
 import { useNavigate } from 'react-router';
 import ParticlesBg from 'particles-bg';
+import { useAuth } from 'context/authContext';
 
 const Register = () => {
 
+  const { setToken } = useAuth();
   const navigate = useNavigate();
-
   const { form, formData, updateFormData } = useFormData();
 
   const [registro, { data: dataMutation, loading: loadingMutation, error: errorMutation }] =
@@ -30,11 +31,11 @@ const Register = () => {
     if (dataMutation) {
       toast.success("Usuario Creado");
       if (dataMutation.registro.token) {
-        localStorage.setItem("token", dataMutation.registro.token);
+        setToken(dataMutation.registro.token);
         navigate("/");
       }
     }
-  }, [dataMutation]);
+  }, [dataMutation, setToken, navigate]);
 
   useEffect(() => {
     if (errorMutation) {
