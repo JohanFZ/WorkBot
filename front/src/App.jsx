@@ -12,6 +12,9 @@ import EditarUsuario from 'pages/usuarios/Editar';
 import AuthLayout from 'layouts/AuthLayout';
 import Register from 'pages/auth/registro';
 
+import { UserContext } from 'context/userContext';
+import { AuthContext } from 'context/authContext';
+
 // Estilos
 
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -32,21 +35,25 @@ const client = new ApolloClient({
 function App() {
   return (
     <ApolloProvider client={client}>
-      <BrowserRouter>
-        <Routes>
-          <Route path='/' element={<PrivateLayout />}>
-            <Route path='' element={<Index />} />
-            <Route path='/usuarios' element={<IndexUsuarios />} />
-            <Route path='/usuarios/editar/:_id' element={<EditarUsuario />} />
-            {/* <Route path='page2' element={<Page2 />} /> */}
-            {/* <Route path='category1' element={<IndexCategory1 />} /> */}
-            {/* <Route path='category1/page1' element={<Category1 />} /> */}
-          </Route>
-          <Route path="/auth" element={<AuthLayout />}>
-            <Route path='register' element={<Register />} />
-          </Route>
-        </Routes>
-      </BrowserRouter>
+      <AuthContext.Provider value={{ authToken, setAuthToken, setToken }}>
+        <UserContext.Provider value={{ userData, setUserData }}>
+          <BrowserRouter>
+            <Routes>
+              <Route path='/' element={<PrivateLayout />}>
+                <Route path='' element={<Index />} />
+                <Route path='/usuarios' element={<IndexUsuarios />} />
+                <Route path='/usuarios/editar/:_id' element={<EditarUsuario />} />
+                {/* <Route path='page2' element={<Page2 />} /> */}
+                {/* <Route path='category1' element={<IndexCategory1 />} /> */}
+                {/* <Route path='category1/page1' element={<Category1 />} /> */}
+              </Route>
+              <Route path="/auth" element={<AuthLayout />}>
+                <Route path='register' element={<Register />} />
+              </Route>
+            </Routes>
+          </BrowserRouter>
+        </UserContext.Provider>
+      </AuthContext.Provider>
     </ApolloProvider>
   );
 }
