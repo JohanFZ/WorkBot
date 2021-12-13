@@ -46,9 +46,13 @@ const Sidebar = () => {
             </SubMenu>
           </PrivateComponent>
           <SubMenu title='Proyectos' icon={<FaArchive />}>
-            <MenuItem>Crear Proyectos</MenuItem>
+            <MenuItem>
+            Crear Proyectos
+            <Link to="/proyectos/crear"/>
+            </MenuItem>
             <MenuItem>
             Listar Proyectos
+            <Link to="/proyectos"/>
             </MenuItem>
           </SubMenu>
           <SubMenu title='Avances' icon={<FaProjectDiagram />}>
