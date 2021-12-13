@@ -21,6 +21,11 @@ import IndexUsuarios from 'pages/usuarios/Index';
 import EditarUsuario from 'pages/usuarios/Editar';
 import Register from 'pages/auth/registro';
 import Login from 'pages/auth/login';
+import IndexProyecto from "pages/proyectos/IndexProyecto";
+import EditarProyectos from "pages/proyectos/EditarProyectos";
+import CrearProyecto from 'pages/proyectos/CrearProyecto';
+import ListarObjetivos from 'pages/proyectos/ListarObjetivos';
+import EditarObjetivo from 'pages/proyectos/EditarObjetivo';
 
 //Contextos
 
@@ -92,6 +97,11 @@ function App() {
                 <Route path='' element={<Index />} />
                 <Route path='/usuarios' element={<IndexUsuarios />} />
                 <Route path='/usuarios/editar/:_id' element={<EditarUsuario />} />
+                <Route path="/proyectos" element={<IndexProyecto />} />
+                <Route path="/proyectos/listaObjetivos/:_id" element={<ListarObjetivos />} />
+                <Route path="/proyectos/editarObjetivos/:id/:indexObjetivo/:tipo/:descripcion" element={<EditarObjetivo />} />
+                <Route path="/proyectos/editar/:_id" element={<EditarProyectos />} />
+                <Route path="/proyectos/crear" element={<CrearProyecto />} />
                 {/* <Route path='page2' element={<Page2 />} /> */}
                 {/* <Route path='category1' element={<IndexCategory1 />} /> */}
                 {/* <Route path='category1/page1' element={<Category1 />} /> */}
