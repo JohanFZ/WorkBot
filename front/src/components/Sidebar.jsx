@@ -56,8 +56,14 @@ const Sidebar = () => {
             <MenuItem>Listar Avances</MenuItem>
           </SubMenu>
           <SubMenu title='Inscripciones' icon={<FaAddressBook />}>
-            <MenuItem>Crear Inscripciones</MenuItem>
-            <MenuItem>Listar Inscripciones</MenuItem>
+            <MenuItem>
+              Crear Inscripciones
+              <Link to="/inscripciones" />
+            </MenuItem>
+            <MenuItem>
+              Listar Inscripciones
+              <Link to="/inscripciones" />
+            </MenuItem>
           </SubMenu>
         </Menu>
       </SidebarContent>

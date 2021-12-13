@@ -21,6 +21,7 @@ import IndexUsuarios from 'pages/usuarios/Index';
 import EditarUsuario from 'pages/usuarios/Editar';
 import Register from 'pages/auth/registro';
 import Login from 'pages/auth/login';
+import IndexInscripciones from 'pages/inscripciones/Index';
 
 //Contextos
 
@@ -92,6 +93,7 @@ function App() {
                 <Route path='' element={<Index />} />
                 <Route path='/usuarios' element={<IndexUsuarios />} />
                 <Route path='/usuarios/editar/:_id' element={<EditarUsuario />} />
+                <Route path='/inscripciones' element={<IndexInscripciones />} />
                 {/* <Route path='page2' element={<Page2 />} /> */}
                 {/* <Route path='category1' element={<IndexCategory1 />} /> */}
                 {/* <Route path='category1/page1' element={<Category1 />} /> */}
