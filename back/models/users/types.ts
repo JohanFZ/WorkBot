@@ -13,6 +13,7 @@ const typesUser = gql`
   }
 
   type UserPass {
+    _id: ID
     password: String!
   }
 
