@@ -1,4 +1,5 @@
 import { UserModel } from "./user";
+import bcrypt from 'bcrypt';
 
 const resolversUser = {
   Query: {
@@ -9,6 +10,10 @@ const resolversUser = {
     User: async (parent, args) => {
       const user = await UserModel.findOne({ _id: args._id });
       return user;
+    },
+    UserPass: async (parent, args) => {
+      const userPass = await UserModel.findOne({ _id: args._id });
+      return userPass;
     },
   },
 
@@ -50,6 +55,19 @@ const resolversUser = {
         { new: true }
       );
 
+      return usuarioEditado;
+    },
+
+    editarPassword: async (parent, args) => {
+
+      const salt = await bcrypt.genSalt(10);
+      const hashedPassword = await bcrypt.hash(args.password, salt);
+
+      const usuarioEditado = await UserModel.findByIdAndUpdate(args._id, {
+        password: hashedPassword,
+      },
+        { new: true }
+      );
       return usuarioEditado;
     },
   }

@@ -12,10 +12,15 @@ const typesUser = gql`
     estado: Enum_EstadoUsuario!
   }
 
+  type UserPass {
+    password: String!
+  }
+
 
   type Query {
     Users: [User]
     User(_id: String!): User
+    UserPass(_id: String!): UserPass
   }
 
   type Mutation {
@@ -39,6 +44,11 @@ const typesUser = gql`
       identificacion: String!
       correo: String!
       estado: Enum_EstadoUsuario!
+    ):User
+
+    editarPassword(
+      _id: String!
+      password: String!
     ):User
   }
 `;

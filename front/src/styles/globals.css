@@ -88,7 +88,7 @@
 
 }
 
-li {
+.sidebar-footer li {
   list-style: none;
   text-decoration: underline #fff;
 }
@@ -154,6 +154,7 @@ li {
 .button {
   margin: 20px;
   width: 300px;
+  font-family: 'Readex Pro', sans-serif;
 }
 
 /* Login */
@@ -183,4 +184,23 @@ li {
 
 .login .form .input-global .input:hover {
   border: 1px solid #000;
+}
+
+/* Perfil */
+
+.card {
+  border: none;
+}
+
+.card .title {
+  font-size: 34px;
+  padding: 20px 0 0 0;
+}
+
+.card .form div{
+  height: 120px;
+}
+
+.card .form .content-button {
+  height: 90px;
 }

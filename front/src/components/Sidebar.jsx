@@ -36,7 +36,7 @@ const Sidebar = () => {
       </SidebarHeader>
       <SidebarContent>
         <Menu iconShape='square'>
-          <MenuItem icon={<FaHome />} suffix={<span className='badge-red'>'new'</span>}>Dashboard</MenuItem>
+          <MenuItem icon={<FaHome />} suffix={<span className='badge-red'>'new'</span>}>Mis Proyectos</MenuItem>
           <PrivateComponent roleList={['ADMINISTRADOR']}>
             <SubMenu title='Usuarios' icon={<FaUserAlt/>}>
               <MenuItem>
@@ -75,7 +75,7 @@ const Sidebar = () => {
         <div className='info-user'>
           <p className='username'>{userData.nombre + " " + userData.apellido}</p>
           <p className='rol'>{userData.rol}</p>
-          <Link to="/usuarios">
+          <Link to={`/profile/${userData._id}`}>
             <li className='profile'>Mi Perfil</li>
           </Link>
         </div>
