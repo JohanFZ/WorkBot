@@ -12,6 +12,7 @@ const Logout = () => {
   const { setToken } = useAuth();
   const deleteToken = () => {
     setToken(null);
+    window.location.reload(true);
   };
   return (
     <li  onClick={() => deleteToken()}>
@@ -36,11 +37,13 @@ const Sidebar = () => {
       </SidebarHeader>
       <SidebarContent>
         <Menu iconShape='square'>
-          <MenuItem icon={<FaHome />} suffix={<span className='badge-red'>'new'</span>}>Mis Proyectos</MenuItem>
+          <MenuItem icon={<FaHome />}>
+            {userData.rol === 'LIDER' ? 'Proyectos Liderados' : 'Mis Proyectos'}
+          </MenuItem>
           <PrivateComponent roleList={['ADMINISTRADOR', 'LIDER']}>
-            <SubMenu title='Usuarios' icon={<FaUserAlt/>}>
+            <SubMenu title={userData.rol === 'ADMINISTRADOR' ? 'Usuarios' : 'Estudiantes'} icon={<FaUserAlt/>}>
               <MenuItem>
-                Listar y Editar Usuarios
+                {userData.rol === 'ADMINISTRADOR' ? 'Listar y Editar Usuarios' : 'Listar y Editar Estudiantes'}
                 <Link to="/usuarios" />
               </MenuItem>
             </SubMenu>
