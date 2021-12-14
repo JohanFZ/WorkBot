@@ -37,9 +37,11 @@ const Sidebar = () => {
       </SidebarHeader>
       <SidebarContent>
         <Menu iconShape='square'>
-          <MenuItem icon={<FaHome />}>
-            {userData.rol === 'LIDER' ? 'Proyectos Liderados' : 'Mis Proyectos'}
-          </MenuItem>
+          <Link to={'/'}>
+            <MenuItem icon={<FaHome />}>
+              {userData.rol === 'LIDER' ? 'Proyectos Liderados' : 'Mis Proyectos'}
+            </MenuItem>
+          </Link>
           <PrivateComponent roleList={['ADMINISTRADOR', 'LIDER']}>
             <SubMenu title={userData.rol === 'ADMINISTRADOR' ? 'Usuarios' : 'Estudiantes'} icon={<FaUserAlt/>}>
               <MenuItem>
