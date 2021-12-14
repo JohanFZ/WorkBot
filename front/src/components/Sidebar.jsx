@@ -37,7 +37,7 @@ const Sidebar = () => {
       <SidebarContent>
         <Menu iconShape='square'>
           <MenuItem icon={<FaHome />} suffix={<span className='badge-red'>'new'</span>}>Mis Proyectos</MenuItem>
-          <PrivateComponent roleList={['ADMINISTRADOR']}>
+          <PrivateComponent roleList={['ADMINISTRADOR', 'LIDER']}>
             <SubMenu title='Usuarios' icon={<FaUserAlt/>}>
               <MenuItem>
                 Listar y Editar Usuarios
