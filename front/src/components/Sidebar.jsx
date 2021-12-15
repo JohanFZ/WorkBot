@@ -37,11 +37,6 @@ const Sidebar = () => {
       </SidebarHeader>
       <SidebarContent>
         <Menu iconShape='square'>
-<<<<<<< HEAD
-          <MenuItem icon={<FaHome />} suffix={<span className='badge-red'>'new'</span>}>Dashboard</MenuItem>
-          <PrivateComponent roleList={['ADMINISTRADOR']}>
-            <SubMenu title='Usuarios' icon={<FaUserAlt />}>
-=======
           <PrivateComponent roleList={['ESTUDIANTE', 'LIDER']}>
             <MenuItem icon={<FaHome />}>
               {userData.rol === 'LIDER' ? 'Proyectos Liderados' : 'Mis Proyectos'}
@@ -50,7 +45,6 @@ const Sidebar = () => {
           </PrivateComponent>
           <PrivateComponent roleList={['ADMINISTRADOR', 'LIDER']}>
             <SubMenu title={userData.rol === 'ADMINISTRADOR' ? 'Usuarios' : 'Estudiantes'} icon={<FaUserAlt/>}>
->>>>>>> d75c9291b0cc5babe003a5eecbd99df686d94cd4
               <MenuItem>
                 {userData.rol === 'ADMINISTRADOR' ? 'Listar y Editar Usuarios' : 'Listar y Editar Estudiantes'}
                 <Link to="/usuarios" />
