@@ -1,7 +1,7 @@
 import { ProSidebar, Menu, MenuItem, SubMenu, SidebarHeader, SidebarContent, SidebarFooter } from 'react-pro-sidebar';
 import 'react-pro-sidebar/dist/css/styles.css';
 import logo from '../assets/logo512.png';
-import {FaUserAlt, FaHome, FaProjectDiagram, FaArchive, FaAddressBook } from 'react-icons/fa';
+import { FaUserAlt, FaHome, FaProjectDiagram, FaArchive, FaAddressBook } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import PrivateComponent from './PrivateComponent';
 import { useAuth } from 'context/authContext';
@@ -14,7 +14,7 @@ const Logout = () => {
     setToken(null);
   };
   return (
-    <li  onClick={() => deleteToken()}>
+    <li onClick={() => deleteToken()}>
       <Link to='/auth/login'>
         <div className='logout'>
           <i className='fas fa-sign-out-alt' />
@@ -38,7 +38,7 @@ const Sidebar = () => {
         <Menu iconShape='square'>
           <MenuItem icon={<FaHome />} suffix={<span className='badge-red'>'new'</span>}>Dashboard</MenuItem>
           <PrivateComponent roleList={['ADMINISTRADOR']}>
-            <SubMenu title='Usuarios' icon={<FaUserAlt/>}>
+            <SubMenu title='Usuarios' icon={<FaUserAlt />}>
               <MenuItem>
                 Listar y Editar Usuarios
                 <Link to="/usuarios" />
@@ -46,13 +46,15 @@ const Sidebar = () => {
             </SubMenu>
           </PrivateComponent>
           <SubMenu title='Proyectos' icon={<FaArchive />}>
+            <PrivateComponent roleList={["ADMINISTRADOR", "LIDER"]}>
+              <MenuItem>
+                Crear Proyectos
+                <Link to="/proyectos/crear" />
+              </MenuItem>
+            </PrivateComponent>
             <MenuItem>
-            Crear Proyectos
-            <Link to="/proyectos/crear"/>
-            </MenuItem>
-            <MenuItem>
-            Listar Proyectos
-            <Link to="/proyectos"/>
+              Listar Proyectos
+              <Link to="/proyectos" />
             </MenuItem>
           </SubMenu>
           <SubMenu title='Avances' icon={<FaProjectDiagram />}>
@@ -80,7 +82,7 @@ const Sidebar = () => {
           </Link>
         </div>
         <div className='logout'>
-          <Logout/>
+          <Logout />
         </div>
       </SidebarFooter>
     </ProSidebar>

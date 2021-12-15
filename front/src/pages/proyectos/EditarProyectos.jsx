@@ -114,7 +114,7 @@ function EditarProyectos() {
                 </div>
                 <div>
                     <ButtonLoading
-                        disabled={false}
+                        disabled={Object.keys(formData).length === 0}
                         loading={false}
                         text='Editar'
                     />

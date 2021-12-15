@@ -5,6 +5,7 @@ import { GET_PROJECTS } from "graphql/proyectos/queries";
 import { SpinnerLoading } from "components/Spinner";
 import { toast } from 'react-toastify';
 import { Button, Table } from "reactstrap";
+import PrivateComponent from "components/PrivateComponent";
 
 
 function IndexProyecto() {
@@ -62,24 +63,26 @@ function IndexProyecto() {
                                     <td>{project.fase}</td>
                                     <td>{project.estado}</td>
                                     <td>
-                                        <Button color="primary">
+                                        <Button outline color="primary">
                                             <Link 
                                             to={`/proyectos/listaObjetivos/${project._id}`}
-                                            style={{color: "white", textDecoration:"none"}}
+                                            style={{color: "black", textDecoration:"none"}}
                                             >
                                                 Ver detalle
                                             </Link>
                                         </Button>
                                     </td>
                                     <td>
-                                        <Button color="primary">
+                                        <PrivateComponent roleList={["ADMINISTRADOR", "LIDER"]}>
+                                        <Button outline color="primary">
                                             <Link 
                                             to={`/proyectos/editar/${project._id}`}
-                                            style={{color: "white", textDecoration:"none"}}
+                                            style={{color: "black", textDecoration:"none"}}
                                             >
                                                 Editar
                                             </Link>
                                         </Button>
+                                        </PrivateComponent>
                                     </td>
                                 </tr>
                             )

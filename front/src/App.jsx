@@ -27,6 +27,7 @@ import EditarProyectos from "pages/proyectos/EditarProyectos";
 import CrearProyecto from 'pages/proyectos/CrearProyecto';
 import ListarObjetivos from 'pages/proyectos/ListarObjetivos';
 import EditarObjetivo from 'pages/proyectos/EditarObjetivo';
+import AgregarObjetivo from 'pages/proyectos/AgregarObjetivo';
 
 //Contextos
 
@@ -102,6 +103,7 @@ function App() {
                 <Route path="/proyectos" element={<IndexProyecto />} />
                 <Route path="/proyectos/listaObjetivos/:_id" element={<ListarObjetivos />} />
                 <Route path="/proyectos/editarObjetivos/:id/:indexObjetivo/:tipo/:descripcion" element={<EditarObjetivo />} />
+                <Route path="/proyectos/agregarObjetivo/:id" element={<AgregarObjetivo />} />
                 <Route path="/proyectos/editar/:_id" element={<EditarProyectos />} />
                 <Route path="/proyectos/crear" element={<CrearProyecto />} />
                 {/* <Route path='page2' element={<Page2 />} /> */}

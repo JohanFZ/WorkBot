@@ -1,0 +1,45 @@
+@import url('https://fonts.googleapis.com/css2?family=Readex+Pro:wght@200;600&display=swap');
+
+
+.form {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin: auto;
+    font-family: 'Readex Pro', sans-serif;
+  }
+  
+  .form div {
+    display: flex;
+    justify-content: center;
+  }
+  
+  .forme div .input-global {
+    padding: 20px;
+  }
+  
+  .forme div .input-global .input {
+    width: 300px;
+  }
+  
+  .forme div .input-global .input:hover {
+    border: 1px solid #000;
+  }
+  
+  .label {
+    text-align: left;
+    font-weight: 600;
+  }
+  
+  .select {
+    padding: 8px;
+    border-radius: 4px;
+    width: 300px;
+    border: 1px solid #ced4da;
+  }
+  
+  .select-content {
+    padding: 20px;
+  }
+  
+  

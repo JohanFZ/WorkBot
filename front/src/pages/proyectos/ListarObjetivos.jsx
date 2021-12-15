@@ -6,6 +6,8 @@ import { GET_PROJECT } from "graphql/proyectos/queries";
 import { SpinnerLoading } from "components/Spinner";
 import { toast } from 'react-toastify';
 import { Button, Table } from "reactstrap";
+import PrivateComponent from "components/PrivateComponent";
+
 
 function ListarObjetivos() {
     const { _id } = useParams();
@@ -31,7 +33,7 @@ function ListarObjetivos() {
 
 
     return (
-        <div>
+        <div className='content-edit'>
             <div className="title">
                 <label>Lista de objetivos del proyecto</label>
             </div>
@@ -42,6 +44,18 @@ function ListarObjetivos() {
                         <th>Fecha Fin</th>
                         <th>Presupuesto</th>
                         <th>Objetivos</th>
+                        <th>
+                        <PrivateComponent roleList={["ADMINISTRADOR", "LIDER"]}>
+                            <Button outline color="primary">
+                                <Link
+                                    to={`/proyectos/agregarObjetivo/${_id}`}
+                                    style={{ color: "black", textDecoration: "none" }}
+                                >
+                                    Agregar Objetivo
+                                </Link>
+                            </Button>
+                            </PrivateComponent>
+                        </th>
                         <th><Link to='/proyectos'>
                             <i className='fas fa-arrow-left back' />
                         </Link></th>
@@ -63,18 +77,20 @@ function ListarObjetivos() {
                                 </thead>
                                 <tbody>
                                     {
-                                        data.ProyectoUnico.objetivos.map((Obje,index) => {
-                                            return(<tr key={index}>
+                                        data.ProyectoUnico.objetivos.map((Obje, index) => {
+                                            return (<tr key={index}>
                                                 <td>{Obje.descripcion}</td>
                                                 <td>{Obje.tipo}</td>
+                                                <PrivateComponent roleList={["ADMINISTRADOR", "LIDER"]}>
                                                 <Button color="primary">
-                                            <Link 
-                                            to={`/proyectos/editarObjetivos/${data.ProyectoUnico._id}/${index}/${Obje.tipo}/${Obje.descripcion}`}
-                                            style={{color: "black", textDecoration:"none"}}
-                                            >
-                                                Editar
-                                            </Link>
-                                        </Button>
+                                                    <Link
+                                                        to={`/proyectos/editarObjetivos/${data.ProyectoUnico._id}/${index}/${Obje.tipo}/${Obje.descripcion}`}
+                                                        style={{ color: "black", textDecoration: "none" }}
+                                                    >
+                                                        Editar
+                                                    </Link>
+                                                </Button>
+                                                </PrivateComponent>
                                             </tr>)
                                         })
                                     }
