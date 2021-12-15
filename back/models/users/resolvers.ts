@@ -1,14 +1,27 @@
 import { UserModel } from "./user";
+import bcrypt from 'bcrypt';
+import { Enum_Rol } from "../enums/enums";
 
 const resolversUser = {
   Query: {
-    Users: async (parent, args) => {
-      const users = await UserModel.find();
-      return users;
+    Users: async (parent, args, context) => {
+      const lider = 'LIDER';
+      if(context.userData.rol === 'ADMINISTRADOR'){
+        const users = await UserModel.find();
+        return users;
+      }
+      if (context.userData.rol === 'LIDER') {
+        const user = await UserModel.find({rol:Enum_Rol.ESTUDIANTE});
+        return user;
+      }
     },
     User: async (parent, args) => {
       const user = await UserModel.findOne({ _id: args._id });
       return user;
+    },
+    UserPass: async (parent, args) => {
+      const userPass = await UserModel.findOne({ _id: args._id });
+      return userPass;
     },
   },
 
@@ -50,6 +63,19 @@ const resolversUser = {
         { new: true }
       );
 
+      return usuarioEditado;
+    },
+
+    editarPassword: async (parent, args) => {
+
+      const salt = await bcrypt.genSalt(10);
+      const hashedPassword = await bcrypt.hash(args.password, salt);
+
+      const usuarioEditado = await UserModel.findByIdAndUpdate(args._id, {
+        password: hashedPassword,
+      },
+        { new: true }
+      );
       return usuarioEditado;
     },
   }

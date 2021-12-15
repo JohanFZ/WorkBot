@@ -34,7 +34,7 @@ query Proyecto($_id: String!){
     objetivos {
       descripcion
       tipo
-    }  
+    }
   }
 }
 `;
@@ -45,7 +45,7 @@ query Proyecto($_id: String!){
     nombre
     presupuesto
     estado
-    fase  
+    fase
   }
 }
 `;
@@ -57,9 +57,34 @@ query Proyecto($_id: String!){
     objetivos{
       descripcion
       tipo
-    } 
+    }
   }
 }
 `;
 
-export { GET_PROJECTS, GET_PROJECT, GET_PROJECTEDIT, GET_PROJECTEDITOBJE};
+const GET_PROJECTSLED = gql`
+query ProyectosLiderados($lider: String){
+    ProyectosLiderados(lider: $lider) {
+        _id
+      nombre
+      presupuesto
+      fase
+      estado
+      fechaInicio
+      fechaFin
+      lider {
+        nombre
+        apellido
+        rol
+        correo
+      }
+      objetivos {
+        descripcion
+        tipo
+      }
+    }
+  }
+`;
+
+
+export { GET_PROJECTS, GET_PROJECT, GET_PROJECTEDIT, GET_PROJECTEDITOBJE, GET_PROJECTSLED  };

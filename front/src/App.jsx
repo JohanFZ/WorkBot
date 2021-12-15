@@ -41,6 +41,8 @@ import 'styles/table.css';
 import './styles/globals.css';
 import 'styles/inputSearch.css';
 import 'styles/spinner.css'
+import Perfil from 'pages/usuarios/Perfil';
+import EditarPass from 'pages/usuarios/EditarPass';
 
 const httpLink = createHttpLink({
   uri: "https://server-back-workbot.herokuapp.com/graphql"
@@ -106,9 +108,8 @@ function App() {
                 <Route path="/proyectos/agregarObjetivo/:id" element={<AgregarObjetivo />} />
                 <Route path="/proyectos/editar/:_id" element={<EditarProyectos />} />
                 <Route path="/proyectos/crear" element={<CrearProyecto />} />
-                {/* <Route path='page2' element={<Page2 />} /> */}
-                {/* <Route path='category1' element={<IndexCategory1 />} /> */}
-                {/* <Route path='category1/page1' element={<Category1 />} /> */}
+                <Route path="/profile/:_id" element={<Perfil />} />
+                <Route path="/change-password/:_id" element={<EditarPass />} />
               </Route>
               <Route path="/auth" element={<AuthLayout />}>
                 <Route path='register' element={<Register />} />

@@ -88,7 +88,7 @@
 
 }
 
-li {
+.sidebar-footer li {
   list-style: none;
   text-decoration: underline #fff;
 }
@@ -154,6 +154,7 @@ li {
 .button {
   margin: 20px;
   width: 300px;
+  font-family: 'Readex Pro', sans-serif;
 }
 
 /* Login */
@@ -183,4 +184,68 @@ li {
 
 .login .form .input-global .input:hover {
   border: 1px solid #000;
+}
+
+/* Perfil */
+
+.card {
+  border: none;
+}
+
+.card .title {
+  font-size: 34px;
+  padding: 20px 0 0 0;
+}
+
+.card .form div{
+  height: 120px;
+}
+
+.card .form .content-button {
+  height: 90px;
+}
+
+/* Proyectos liderados */
+
+.content-projects {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  font-family: 'Readex Pro', sans-serif;
+}
+
+.content-projects .content-card {
+  box-shadow: rgba(0,0,0,0.35) 0px 5px 15px;
+  width: 400px;
+  padding: 20px;
+  margin: 25px;
+  text-align: center;
+}
+
+.content-projects .content-card .title {
+  font-size: 25px;
+  padding: 0;
+}
+
+.content-projects .content-card div .date {
+  font-size: 13px;
+  margin: 13px;
+}
+
+.content-card-info {
+  display: flex;
+}
+
+.content-card-info div {
+  width: 180px;
+}
+
+.content-card-info div:first-child {
+  text-align: start;
+  font-weight: 600;
+}
+
+.content-card-info div:last-child {
+  text-align: end;
 }

@@ -12,6 +12,7 @@ const Logout = () => {
   const { setToken } = useAuth();
   const deleteToken = () => {
     setToken(null);
+    window.location.reload(true);
   };
   return (
     <li onClick={() => deleteToken()}>
@@ -36,11 +37,22 @@ const Sidebar = () => {
       </SidebarHeader>
       <SidebarContent>
         <Menu iconShape='square'>
+<<<<<<< HEAD
           <MenuItem icon={<FaHome />} suffix={<span className='badge-red'>'new'</span>}>Dashboard</MenuItem>
           <PrivateComponent roleList={['ADMINISTRADOR']}>
             <SubMenu title='Usuarios' icon={<FaUserAlt />}>
+=======
+          <PrivateComponent roleList={['ESTUDIANTE', 'LIDER']}>
+            <MenuItem icon={<FaHome />}>
+              {userData.rol === 'LIDER' ? 'Proyectos Liderados' : 'Mis Proyectos'}
+              <Link to="/" />
+            </MenuItem>
+          </PrivateComponent>
+          <PrivateComponent roleList={['ADMINISTRADOR', 'LIDER']}>
+            <SubMenu title={userData.rol === 'ADMINISTRADOR' ? 'Usuarios' : 'Estudiantes'} icon={<FaUserAlt/>}>
+>>>>>>> d75c9291b0cc5babe003a5eecbd99df686d94cd4
               <MenuItem>
-                Listar y Editar Usuarios
+                {userData.rol === 'ADMINISTRADOR' ? 'Listar y Editar Usuarios' : 'Listar y Editar Estudiantes'}
                 <Link to="/usuarios" />
               </MenuItem>
             </SubMenu>
@@ -77,7 +89,7 @@ const Sidebar = () => {
         <div className='info-user'>
           <p className='username'>{userData.nombre + " " + userData.apellido}</p>
           <p className='rol'>{userData.rol}</p>
-          <Link to="/usuarios">
+          <Link to={`/profile/${userData._id}`}>
             <li className='profile'>Mi Perfil</li>
           </Link>
         </div>

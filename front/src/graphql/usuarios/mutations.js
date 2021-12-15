@@ -27,4 +27,18 @@ const EDITAR_USUARIO = gql`
 }
 `;
 
-export { EDITAR_USUARIO };
+const EDITAR_PASSWORD = gql`
+  mutation EditarPassword(
+    $_id: String!
+    $password: String!
+  ) {
+  editarPassword(
+    _id: $_id
+    password: $password
+    ) {
+    _id
+  }
+}
+`;
+
+export { EDITAR_USUARIO, EDITAR_PASSWORD };

@@ -36,7 +36,7 @@ const IndexUsuarios = () => {
   if (loading) return <SpinnerLoading/>;
 
   return (
-    <PrivateRoute roleList={['ADMINISTRADOR']}>
+    <PrivateRoute roleList={['ADMINISTRADOR', 'LIDER']}>
       <div>
         <div className='title'>
           <label>Listado de Usuarios</label>

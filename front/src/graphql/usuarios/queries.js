@@ -28,4 +28,13 @@ query User($_id: String!)  {
 }
 ` ;
 
-export { GET_USUARIOS, GET_USUARIO };
+const GET_USERPASS = gql`
+query UserPass($_id: String!)  {
+  UserPass(_id: $_id) {
+    _id
+    password
+  }
+}
+` ;
+
+export { GET_USUARIOS, GET_USUARIO, GET_USERPASS };
