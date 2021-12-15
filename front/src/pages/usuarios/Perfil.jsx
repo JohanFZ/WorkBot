@@ -58,7 +58,7 @@ const Perfil = () => {
 
   return (
     <div className='content-edit'>
-      <Link to='/home'>
+      <Link to='/'>
         <i className='fas fa-arrow-left back' />
       </Link>
       <div className='opciones'>

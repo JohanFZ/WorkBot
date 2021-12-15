@@ -22,6 +22,11 @@ const Index = () => {
     variables: { lider }
   });
 
+  const formatDate = (date) => {
+    let formatted_date = date.getDate() + "-" + (date.getMonth() + 1) + "-" + date.getFullYear();
+    return formatted_date;
+  }
+
 
   useEffect(() => {
     if (queryData) {
@@ -32,34 +37,68 @@ const Index = () => {
 
   return (
     <div>
-      <div className='title'>
-        <label>{userData.rol === 'LIDER' ? 'Proyectos liderados' : 'Mis Proyectos'}</label>
+      {userData.rol === 'LIDER' ?
+        <div>
+          <div className='title'>
+          <label>{userData.rol === 'LIDER' ? 'Proyectos Liderados' : 'Mis Proyectos'}</label>
+          {/* <InputSearch
+            placeholder='Buscar proyecto por nombre'
+          // onChange={e => setTerm(e.target.value)}
+          /> */}
+        </div>
+          <div className='content-projects'>
+            {queryData && queryData.ProyectosLiderados.map((u) => {
+              return (
+                <div className='content-card'>
+                  <p className='title'>{u.nombre}</p>
+                  <hr />
+                  <div>
+                    <b className='date'>Fecha Inicio : {u.fechaInicio.slice(0, 10)}</b>
+                    <b className='date'>Fecha Fin : {u.fechaFin.slice(0, 10)}</b>
+                  </div>
+                  <hr />
+                  <div className='content-card-info'>
+                    <div>
+                      <p>Presupuesto : </p>
+                      <p>Fase : </p>
+                      <p>Estado : </p>
+                      <p>Lider : </p>
+                    </div>
+                    <div>
+                      <p> {' $' + u.presupuesto}</p>
+                      <p> {u.fase}</p>
+                      <p> {u.estado}</p>
+                      <p> {u.lider.nombre + ' ' + u.lider.apellido}</p>
+                    </div>
+                  </div>
+                    <div></div>
+                  <p>
+                    <Button color='primary'>
+                      <Link to={`/usuarios/editar/${u._id}`} style={{ color: "white", textDecoration: "none" }}>
+                        Ver Detalles
+                      </Link>
+                    </Button>
+                  </p>
+                </div>
+              )
+            })
+
+            }
+          </div>
+        </div> : <br />
+      }
+
+      {userData.rol === 'ESTUDIANTE' ?
+        <div><div className='title'>
+          <label>{userData.rol === 'LIDER' ? 'Proyectos Liderados' : 'Mis Proyectos'}</label>
           <InputSearch
             placeholder='Buscar proyecto por nombre'
-            // onChange={e => setTerm(e.target.value)}
+          // onChange={e => setTerm(e.target.value)}
           />
-      </div>
-      <div>
-        {queryData && queryData.ProyectosLiderados.map((u) => {
-          return (
-            <div>
-                <p>{u.nombre}</p>
-                <p>{u.presupuesto}</p>
-                <p>{u.fase}</p>
-                <p>{u.estado}</p>
-                <p>
-                  <Button color='primary'>
-                    <Link to={`/usuarios/editar/${u._id}`} style={{ color: "white", textDecoration: "none" }}>
-                      Ver Detalles
-                    </Link>
-                  </Button>
-                </p>
-            </div>
-          )
-        })
+        </div>
+        </div> : <br />
+      }
 
-        }
-      </div>
     </div>
   );
 };
