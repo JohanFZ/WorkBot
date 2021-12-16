@@ -14,9 +14,6 @@ import AuthLayout from 'layouts/AuthLayout';
 //Pages
 
 import Index from './pages/Index';
-// import Page2 from './pages/Page2';
-// import IndexCategory1 from './pages/category1/Index';
-// import Category1 from './pages/category1/CategoryPage1';
 import IndexUsuarios from 'pages/usuarios/Index';
 import EditarUsuario from 'pages/usuarios/Editar';
 import Register from 'pages/auth/registro';
@@ -45,8 +42,8 @@ import Perfil from 'pages/usuarios/Perfil';
 import EditarPass from 'pages/usuarios/EditarPass';
 
 const httpLink = createHttpLink({
-  //uri: "https://server-back-workbot.herokuapp.com/graphql"
-  uri: "http://localhost:4000/graphql"
+  uri: "https://server-back-workbot.herokuapp.com/graphql"
+  // uri: "http://localhost:4000/graphql"
 });
 
 const authLink = setContext((_, { headers }) => {

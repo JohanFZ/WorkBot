@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React from 'react';
 import { Input, InputGroup, UncontrolledButtonDropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
 
 const InputSearch = ({placeholder, onChange}) => {

@@ -1,18 +1,15 @@
 import React, {useEffect, useState} from 'react';
 import { useParams } from 'react-router';
 import { useQuery, useMutation } from '@apollo/client';
-import { GET_USUARIO, GET_USERPASS } from 'graphql/usuarios/queries';
+import { GET_USUARIO } from 'graphql/usuarios/queries';
 import InputGlobal from 'components/InputGlobal';
 import { Link } from 'react-router-dom';
 import ButtonLoading from 'components/ButtonLoading';
 import { toast } from 'react-toastify';
 import useFormData from 'hooks/useFormData';
 import { EDITAR_USUARIO } from 'graphql/usuarios/mutations';
-import DropDown from 'components/Dropdown';
-import { Enum_EstadoUsuario } from 'utils/enum';
 import { SpinnerLoading } from 'components/Spinner';
 import { Button, Collapse, Card } from 'reactstrap';
-import bcrypt from 'bcryptjs';
 
 const Perfil = () => {
 

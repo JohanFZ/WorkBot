@@ -67,16 +67,18 @@ const Sidebar = () => {
             <MenuItem>Crear Avances</MenuItem>
             <MenuItem>Listar Avances</MenuItem>
           </SubMenu>
-          <SubMenu title='Inscripciones' icon={<FaAddressBook />}>
-            <MenuItem>
-              Crear Inscripciones
-              <Link to="/inscripciones" />
-            </MenuItem>
-            <MenuItem>
-              Listar Inscripciones
-              <Link to="/inscripciones" />
-            </MenuItem>
-          </SubMenu>
+          <PrivateComponent roleList={['ADMINISTRADOR', 'LIDER']}>
+            <SubMenu title='Inscripciones' icon={<FaAddressBook />}>
+              <MenuItem>
+                Crear Inscripciones
+                <Link to="/inscripciones" />
+              </MenuItem>
+              <MenuItem>
+                Listar Inscripciones
+                <Link to="/inscripciones" />
+              </MenuItem>
+            </SubMenu>
+          </PrivateComponent>
         </Menu>
       </SidebarContent>
       <SidebarFooter className='sidebar-footer'>

@@ -8,8 +8,6 @@ import ButtonLoading from 'components/ButtonLoading';
 import { toast } from 'react-toastify';
 import useFormData from 'hooks/useFormData';
 import { EDITAR_PASSWORD } from 'graphql/usuarios/mutations';
-import DropDown from 'components/Dropdown';
-import { Enum_EstadoUsuario } from 'utils/enum';
 import { SpinnerLoading } from 'components/Spinner';
 import { Button, Collapse, Card } from 'reactstrap';
 import bcrypt from 'bcryptjs';
