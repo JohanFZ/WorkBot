@@ -43,7 +43,8 @@ import 'styles/spinner.css'
 import Perfil from 'pages/usuarios/Perfil';
 
 const httpLink = createHttpLink({
-  uri: "https://server-back-workbot.herokuapp.com/graphql"
+  //uri: "https://server-back-workbot.herokuapp.com/graphql"
+  uri: "http://localhost:4000/graphql"
 });
 
 const authLink = setContext((_, { headers }) => {

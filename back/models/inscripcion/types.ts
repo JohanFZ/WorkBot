@@ -20,11 +20,9 @@ const typesInscripcion = gql`
     ): Inscripcion
     aprobarInscripcion(
       id: String!
-      fechaIngreso: Date!
     ): Inscripcion
     rechazarInscripcion(
       id: String!
-      fechaIngreso: Date!
     ): Inscripcion
   }
 `;

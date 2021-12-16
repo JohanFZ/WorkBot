@@ -21,7 +21,7 @@ const resolverInscripciones = {
       const inscripcionAprobada = await InscriptionModel.findByIdAndUpdate(args.id,
         {
           estado: Enum_EstadoInscripcion.ACEPTADA,
-          //fechaIngreso: Date.now(),
+          fechaIngreso: new Date,
         },
         { new: true }
       );
@@ -31,7 +31,7 @@ const resolverInscripciones = {
       const inscripcionAprobada = await InscriptionModel.findByIdAndUpdate(args.id,
         {
           estado: Enum_EstadoInscripcion.RECHAZADA,
-          //fechaIngreso: Date.now(),
+          fechaIngreso: new Date,
         },
         { new: true }
       );
