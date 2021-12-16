@@ -28,14 +28,6 @@ const Perfil = () => {
     variables: { _id }
   });
 
-  const {
-    data: queryDataPass,
-    error: queryErrorPass,
-    loading: queryLoadingPass
-  } = useQuery(GET_USERPASS, {
-    variables: { _id }
-  });
-
   const [editarUsuario,
     { data: mutationData, loading: mutationLoading, error: mutationError }] = useMutation(EDITAR_USUARIO);
 
@@ -43,21 +35,8 @@ const Perfil = () => {
     e.preventDefault();
     // console.log("fd", formData);
     editarUsuario({
-      variables: { _id, ...formData }
+      variables: { _id, ...formData, estado: queryData.User.estado }
     })
-  };
-
-  const submitFormPass = (e) => {
-    e.preventDefault();
-    const pass = e.target[0].value;
-    if(bcrypt.compareSync(pass, queryDataPass.UserPass.password)){
-      console.log("Esta correcta");
-    }else {
-      toast.error("La contraseña actual no coincide.");
-    }
-    // editarUsuario({
-    //   variables: { _id, ...formData }
-    // })
   };
 
   useEffect(() => {
@@ -65,12 +44,6 @@ const Perfil = () => {
       toast.success("Usuario Actualizado");
     }
   }, [mutationData]);
-
-  useEffect(() => {
-    if (queryDataPass) {
-      console.log("pass", queryDataPass);
-    }
-  }, [queryDataPass]);
 
   useEffect(() => {
     if (queryError) {
@@ -81,20 +54,22 @@ const Perfil = () => {
     }
   }, [queryError, mutationError]);
 
-  if (queryLoading || queryLoadingPass || mutationLoading) return <SpinnerLoading />;
+  if (queryLoading || mutationLoading) return <SpinnerLoading />;
 
   return (
     <div className='content-edit'>
-      <Link to='/home'>
+      <Link to='/'>
         <i className='fas fa-arrow-left back' />
       </Link>
       <div className='opciones'>
         <Button className='button' disabled={boolean === true} color='primary' onClick={() => setBoolean(!boolean)}>
           Datos Personales
         </Button>
-        <Button className='button' disabled={boolean === false} color='primary' onClick={() => setBoolean(!boolean)}>
-          Cambio de Contraseña
-        </Button>
+        <Link to={`/change-password/${_id}`}>
+          <Button className='button' disabled={boolean === false} color='primary' onClick={() => setBoolean(!boolean)}>
+            Cambio de Contraseña
+          </Button>
+        </Link>
       </div>
       <Collapse isOpen={boolean === false ? false : true}>
         <Card>
@@ -137,7 +112,7 @@ const Perfil = () => {
                 required={true}
               />
             </div>
-            <div>
+            {/* <div>
               <DropDown
                 label='Estado :'
                 name='estado'
@@ -145,40 +120,7 @@ const Perfil = () => {
                 required={true}
                 options={Enum_EstadoUsuario}
               />
-            </div>
-            <div className='content-button'>
-              <ButtonLoading
-                disabled={Object.keys(formData).length === 0}
-                loading={mutationLoading}
-                text='Confirmar'
-              />
-            </div>
-          </form>
-        </Card>
-      </Collapse>
-      <Collapse isOpen={boolean === false ? true : false}>
-        <Card>
-          <h1 className='title'>Cambio de Contraseña</h1>
-          <form
-            onSubmit={submitFormPass}
-            onChange={updateFormData}
-            ref={form}
-            className='form'
-          >
-            <div>
-              <InputGlobal
-                label='Contraseña Actual :'
-                type='password'
-                name='passworda'
-                required={true}
-              />
-              <InputGlobal
-                label='Contraseña Nueva :'
-                type='password'
-                name='password'
-                required={true}
-              />
-            </div>
+            </div> */}
             <div className='content-button'>
               <ButtonLoading
                 disabled={Object.keys(formData).length === 0}

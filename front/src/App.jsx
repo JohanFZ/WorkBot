@@ -27,6 +27,7 @@ import EditarProyectos from "pages/proyectos/EditarProyectos";
 import CrearProyecto from 'pages/proyectos/CrearProyecto';
 import ListarObjetivos from 'pages/proyectos/ListarObjetivos';
 import EditarObjetivo from 'pages/proyectos/EditarObjetivo';
+import AgregarObjetivo from 'pages/proyectos/AgregarObjetivo';
 
 //Contextos
 
@@ -41,6 +42,7 @@ import './styles/globals.css';
 import 'styles/inputSearch.css';
 import 'styles/spinner.css'
 import Perfil from 'pages/usuarios/Perfil';
+import EditarPass from 'pages/usuarios/EditarPass';
 
 const httpLink = createHttpLink({
   //uri: "https://server-back-workbot.herokuapp.com/graphql"
@@ -104,9 +106,11 @@ function App() {
                 <Route path="/proyectos" element={<IndexProyecto />} />
                 <Route path="/proyectos/listaObjetivos/:_id" element={<ListarObjetivos />} />
                 <Route path="/proyectos/editarObjetivos/:id/:indexObjetivo/:tipo/:descripcion" element={<EditarObjetivo />} />
+                <Route path="/proyectos/agregarObjetivo/:id" element={<AgregarObjetivo />} />
                 <Route path="/proyectos/editar/:_id" element={<EditarProyectos />} />
                 <Route path="/proyectos/crear" element={<CrearProyecto />} />
                 <Route path="/profile/:_id" element={<Perfil />} />
+                <Route path="/change-password/:_id" element={<EditarPass />} />
               </Route>
               <Route path="/auth" element={<AuthLayout />}>
                 <Route path='register' element={<Register />} />
