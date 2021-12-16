@@ -7,6 +7,12 @@ const resolverInscripciones = {
       const inscripciones = await InscriptionModel.find().populate("estudiante").populate("proyecto");
       return inscripciones;
     },
+    InscripcionesProyectos: async (parent, args) => {
+      const proyectos = await InscriptionModel.find({
+        estudiante: args.estudiante
+      }).populate("estudiante").populate("proyecto");
+      return proyectos;
+    },
   },
   Mutation: {
     crearInscripcion: async (parent, args) => {
@@ -17,7 +23,7 @@ const resolverInscripciones = {
       });
       return inscripcionCreada;
     },
-    aprobarInscripcion: async (parent, args) => {    
+    aprobarInscripcion: async (parent, args) => {
       const inscripcionAprobada = await InscriptionModel.findByIdAndUpdate(args.id,
         {
           estado: Enum_EstadoInscripcion.ACEPTADA,
@@ -27,7 +33,7 @@ const resolverInscripciones = {
       );
       return inscripcionAprobada;
     },
-    rechazarInscripcion: async (parent, args) => {    
+    rechazarInscripcion: async (parent, args) => {
       const inscripcionAprobada = await InscriptionModel.findByIdAndUpdate(args.id,
         {
           estado: Enum_EstadoInscripcion.RECHAZADA,
