@@ -8,6 +8,7 @@ import { LOGIN } from 'graphql/auth/mutations';
 import { useAuth } from 'context/authContext';
 import { useNavigate } from 'react-router-dom';
 import ParticlesBg from 'particles-bg';
+import { toast } from 'react-toastify';
 
 const Login = () => {
 
@@ -28,16 +29,29 @@ const Login = () => {
 
   useEffect(() => {
     if (mutationData) {
+      console.log(mutationData);
       if (mutationData.login.token) {
         setToken(mutationData.login.token);
         navigate("/");
+      }
+      else if (mutationData.login.error === "Contraseña incorrecta"){
+        toast.error("Contraseña Incorecta");
+      }
+      else if (mutationData.login.error === "El usuario no existe") {
+        toast.error("Usuario no Existente");
+      }
+      else if (mutationData.login.error === "Su cuenta esta en estado pendiente") {
+        toast.warning("La cuenta no ha sido autorizada por el momento, vuelva a intentar más tarde.");
+      }
+      else if (mutationData.login.error === "Su cuenta no esta autorizada") {
+        toast.error("Su cuenta no esta autorizada");
       }
     }
   }, [mutationData, setToken, navigate]);
 
   return (
     <div className='login'>
-      <ParticlesBg color='#0d6efd' num={100} type='cobweb' bg={true} />
+      <ParticlesBg color='#0d6efd' num={60} type='cobweb' bg={true} />
       <h1 className='title'>Iniciar Sesión</h1>
       <form className='form' onSubmit={submitForm} onChange={updateFormData} ref={form}>
         <InputGlobal name='correo' type='email' label='Correo' required={true} />

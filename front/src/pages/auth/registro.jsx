@@ -32,7 +32,7 @@ const Register = () => {
       toast.success("Usuario Creado");
       if (dataMutation.registro.token) {
         setToken(dataMutation.registro.token);
-        navigate("/");
+        navigate("/auth/login");
       }
     }
   }, [dataMutation, setToken, navigate]);

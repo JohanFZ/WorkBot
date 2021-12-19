@@ -1,6 +1,6 @@
 import React from 'react';
 import { Outlet } from 'react-router';
-
+import { ToastContainer } from 'react-toastify';
 
 const AuthLayout = () => {
   return (
@@ -9,6 +9,7 @@ const AuthLayout = () => {
           {/* Este es el layout de autenticacion */}
           <Outlet />
         </div>
+      <ToastContainer />
     </div>
   )
 }
