@@ -26,6 +26,9 @@ function EditarObjetivo() {
     }, [mutationData]);
 
     useEffect(() => {
+        if(mutationError){
+            toast.warning("Error modificando");
+        }
         console.log("Error en mutacion", mutationError);
     }, [mutationError]);
 
@@ -35,7 +38,7 @@ function EditarObjetivo() {
 
     const submitForm = (event) =>{
         event.preventDefault();
-        console.log("Datos form", formData);
+        // console.log("Datos form", formData);
         editObje({
             variables:{
                 id, 

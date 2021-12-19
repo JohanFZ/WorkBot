@@ -11,11 +11,13 @@ import { Button } from "reactstrap";
 import "styles/createObjectiveform.css";
 import { nanoid } from "nanoid";
 import { ObjContext, useObj } from 'context/objContext';
+import { useUser } from 'context/userContext';
 import { toast } from 'react-toastify';
 
 
 function CrearProyecto() {
 
+    const { userData } = useUser();
     const { form, formData, updateFormData } = useFormData();
     const [users, setUsers] = useState({});
     const [crearProyecto,
@@ -40,19 +42,27 @@ function CrearProyecto() {
     }, [mutationError]);
 
     useEffect(() => {
+        console.log(userData.rol, userData.nombre, userData.apellido)
         const usersList = {};
-        if (dataQuery) {
-            const dataQueryFiltered = dataQuery.Users.filter((user) => {
-                return ((user.rol === "ADMINISTRADOR" || user.rol === "LIDER") && user.estado === "AUTORIZADO")
-            });
-
-            console.log("Datos de la consulta", dataQuery);
-            console.log(dataQueryFiltered);
-
-            dataQueryFiltered.forEach((element) => {
-                usersList[element._id] = element.nombre + " " + element.apellido;
-            });
+        if(userData.rol === "LIDER"){
+            // console.log("entro")
+            usersList[userData._id] = userData.nombre + " " + userData.apellido;
             setUsers(usersList);
+        }else{
+
+            if (dataQuery) {
+                const dataQueryFiltered = dataQuery.Users.filter((user) => {
+                    return ((user.rol === "ADMINISTRADOR" || user.rol === "LIDER") && user.estado === "AUTORIZADO")
+                });
+    
+                // console.log("Datos de la consulta", dataQuery);
+                // console.log(dataQueryFiltered);
+    
+                dataQueryFiltered.forEach((element) => {
+                    usersList[element._id] = element.nombre + " " + element.apellido;
+                });
+                setUsers(usersList);
+            }
         }
     }, [dataQuery]);
 

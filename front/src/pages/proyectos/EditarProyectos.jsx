@@ -53,7 +53,7 @@ function EditarProyectos() {
 
     const submitForm = (event) => {
         event.preventDefault();
-        console.log("Datos form", formData);
+        // console.log("Datos form", formData);
         formData.presupuesto = parseFloat(formData.presupuesto);
         editPro({
             variables: { _id, camposPro: { ...formData } }

@@ -36,7 +36,7 @@ function AgregarObjetivo() {
 
     const submitForm = (event) => {
         event.preventDefault();
-        console.log("Datos formulario", formData);
+        // console.log("Datos formulario", formData);
         addObjective({
             variables: {
                 id,
