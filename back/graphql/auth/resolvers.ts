@@ -32,18 +32,40 @@ const resolversAuth = {
 
     login: async (parent, args) => {
       const usuarioEncontrado = await UserModel.findOne({ correo: args.correo });
-      if (await bcrypt.compare(args.password, usuarioEncontrado.password)) {
+      if(!usuarioEncontrado) {
         return {
-          token: generateToken({
-            _id: usuarioEncontrado._id,
-            nombre: usuarioEncontrado.nombre,
-            apellido: usuarioEncontrado.apellido,
-            identificacion: usuarioEncontrado.identificacion,
-            correo: usuarioEncontrado.correo,
-            rol: usuarioEncontrado.rol,
-          }),
-        };
-      };
+          error : "El usuario no existe",
+        }
+      } else {
+        if(usuarioEncontrado.estado === "PENDIENTE"){
+          return {
+            error : "Su cuenta esta en estado pendiente",
+          }
+        }
+        if (usuarioEncontrado.estado === "NO_AUTORIZADO") {
+          return {
+            error: "Su cuenta no esta autorizada",
+          }
+        }
+        else if (usuarioEncontrado.estado === "AUTORIZADO") {
+          if (await bcrypt.compare(args.password, usuarioEncontrado.password)) {
+            return {
+              token: generateToken({
+                _id: usuarioEncontrado._id,
+                nombre: usuarioEncontrado.nombre,
+                apellido: usuarioEncontrado.apellido,
+                identificacion: usuarioEncontrado.identificacion,
+                correo: usuarioEncontrado.correo,
+                rol: usuarioEncontrado.rol,
+              }),
+            };
+          } else {
+            return {
+              error: "Contraseña incorrecta",
+            }
+          }
+        }
+      }
     },
 
     validateToken: async (parent, args, context) => {
