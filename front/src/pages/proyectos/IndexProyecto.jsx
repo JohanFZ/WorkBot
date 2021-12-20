@@ -107,14 +107,19 @@ function IndexProyecto() {
                                     </td>
                                     <td>
                                         <PrivateComponent roleList={["ADMINISTRADOR", "LIDER"]}>
-                                            <Button outline color="primary">
-                                                <Link
-                                                    to={`/proyectos/editar/${project._id}`}
-                                                    style={{ color: "black", textDecoration: "none" }}
-                                                >
-                                                    Editar
-                                                </Link>
-                                            </Button>
+                                            {
+                                                ((userData.rol === "LIDER" && project.lider._id === userData._id) || userData.rol === "ADMINISTRADOR") && (
+
+                                                    <Button outline color="primary">
+                                                        <Link
+                                                            to={`/proyectos/editar/${project._id}`}
+                                                            style={{ color: "black", textDecoration: "none" }}
+                                                        >
+                                                            Editar
+                                                        </Link>
+                                                    </Button>
+                                                )
+                                            }
                                         </PrivateComponent>
                                         <PrivateComponent roleList={"ESTUDIANTE"}>
                                             {

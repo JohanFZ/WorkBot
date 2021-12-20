@@ -7,9 +7,11 @@ import { SpinnerLoading } from "components/Spinner";
 import { toast } from 'react-toastify';
 import { Button, Table } from "reactstrap";
 import PrivateComponent from "components/PrivateComponent";
+import { useUser } from 'context/userContext';
 
 
 function ListarObjetivos() {
+    const { userData } = useUser();
     const { _id } = useParams();
     const { data, error, loading } = useQuery(GET_PROJECT, {
         variables: { _id },
@@ -45,15 +47,20 @@ function ListarObjetivos() {
                         <th>Presupuesto</th>
                         <th>Objetivos</th>
                         <th>
-                        <PrivateComponent roleList={["ADMINISTRADOR", "LIDER"]}>
-                            <Button outline color="primary">
-                                <Link
-                                    to={`/proyectos/agregarObjetivo/${_id}`}
-                                    style={{ color: "black", textDecoration: "none" }}
-                                >
-                                    Agregar Objetivo
-                                </Link>
-                            </Button>
+                            <PrivateComponent roleList={["ADMINISTRADOR", "LIDER"]}>
+                                {
+                                    ((userData.rol === "LIDER" && data.ProyectoUnico.lider._id === userData._id) || userData.rol === "ADMINISTRADOR") && (
+
+                                        <Button outline color="primary">
+                                            <Link
+                                                to={`/proyectos/agregarObjetivo/${_id}`}
+                                                style={{ color: "black", textDecoration: "none" }}
+                                            >
+                                                Agregar Objetivo
+                                            </Link>
+                                        </Button>
+                                    )
+                                }
                             </PrivateComponent>
                         </th>
                         <th><Link to='/proyectos'>
@@ -82,14 +89,19 @@ function ListarObjetivos() {
                                                 <td>{Obje.descripcion}</td>
                                                 <td>{Obje.tipo}</td>
                                                 <PrivateComponent roleList={["ADMINISTRADOR", "LIDER"]}>
-                                                <Button color="primary">
-                                                    <Link
-                                                        to={`/proyectos/editarObjetivos/${data.ProyectoUnico._id}/${index}/${Obje.tipo}/${Obje.descripcion}`}
-                                                        style={{ color: "black", textDecoration: "none" }}
-                                                    >
-                                                        Editar
-                                                    </Link>
-                                                </Button>
+                                                    {
+                                                        ((userData.rol === "LIDER" && data.ProyectoUnico.lider._id === userData._id) || userData.rol === "ADMINISTRADOR") && (
+
+                                                            <Button color="primary">
+                                                                <Link
+                                                                    to={`/proyectos/editarObjetivos/${data.ProyectoUnico._id}/${index}/${Obje.tipo}/${Obje.descripcion}`}
+                                                                    style={{ color: "black", textDecoration: "none" }}
+                                                                >
+                                                                    Editar
+                                                                </Link>
+                                                            </Button>
+                                                        )
+                                                    }
                                                 </PrivateComponent>
                                             </tr>)
                                         })

@@ -6,6 +6,7 @@ query Proyecto{
         _id
       nombre
       lider {
+        _id
         nombre
         apellido
         rol
@@ -35,6 +36,7 @@ query Proyecto($_id: String!){
     fechaFin
     presupuesto
     lider {
+      _id
       nombre
       apellido
       correo
