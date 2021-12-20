@@ -14,6 +14,7 @@ const typesAdvancements= gql`
   type Query {
     Advancements: [Advancement]
     Advancement(_id: String!): Advancement
+    AdvancesProject(proyecto: String):[Advancement]
   }
 
   type Mutation {

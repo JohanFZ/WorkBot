@@ -10,6 +10,12 @@ const resolversAdvancement = {
       const advancement = await advancementModel.findOne({ _id: args._id }).populate('creadoPor').populate('proyecto');
       return advancement;
     },
+    AdvancesProject: async (parent, args) => {
+      const proyectos = await advancementModel.find({
+        proyecto: args.proyecto
+      }).populate("creadoPor").populate({ path: "proyecto", populate: { path: "lider" } });
+        return proyectos;
+    },
   },
 
   Mutation: {
