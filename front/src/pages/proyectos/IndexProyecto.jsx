@@ -3,16 +3,24 @@ import { Link } from "react-router-dom";
 import { useQuery } from "@apollo/client";
 import { GET_PROJECTS } from "graphql/proyectos/queries";
 import { SpinnerLoading } from "components/Spinner";
+import { useMutation } from '@apollo/client';
 import { toast } from 'react-toastify';
 import { Button, Table } from "reactstrap";
+import { CREAR_INSCRIPCION } from 'graphql/inscripciones/mutaciones'
 import PrivateComponent from "components/PrivateComponent";
+import { useUser } from 'context/userContext';
 
 
 function IndexProyecto() {
-
+    const { userData } = useUser();
    
     const { data, error, loading } = useQuery(GET_PROJECTS);
     const [, forceUpdate] = useReducer(x => x + 1, 0);
+
+    const [crearInscripcion, 
+        { data:dataMutatationCrear, 
+          loading:loadingMutatationCrear, 
+          error:errorMutatationCrear}] = useMutation(CREAR_INSCRIPCION);
 
     useEffect(() => {
         forceUpdate();
@@ -20,15 +28,35 @@ function IndexProyecto() {
     }, [data]);
 
     useEffect(() => {
+          toast.success("Inscripción Solicitada");
+    }, dataMutatationCrear);
+
+    useEffect(() => {
         if (error) {
             toast.error("Error consultando los proyectos");
             console.log(error);
         }
-    }, [error]);
+        if (errorMutatationCrear) {
+            toast.error("Error en la inscripcion");
+            console.log(errorMutatationCrear);
+        }
+    }, [error, errorMutatationCrear]);
 
-    if (loading) {
+    if (loading || loadingMutatationCrear) {
         return <SpinnerLoading />;
     }
+
+
+    const solicitarInscripcion = (proyecto, estudiante) => {
+        crearInscripcion({
+            variables: {
+                proyecto: proyecto,
+                estudiante: estudiante,
+                estado: "PENDIENTE",
+            },
+        });
+      };
+
     
     return (
         <div>
@@ -47,6 +75,9 @@ function IndexProyecto() {
                         <th>Fase</th>
                         <th>Estado</th>
                         <th>Objetivos</th>
+                        <PrivateComponent roleList={"ESTUDIANTE"}>
+                            <th>Inscripcion</th>
+                        </PrivateComponent>
                         <th></th>
                         <th></th>
                     </tr>
@@ -83,6 +114,18 @@ function IndexProyecto() {
                                             </Link>
                                         </Button>
                                         </PrivateComponent>
+                                        <PrivateComponent roleList={"ESTUDIANTE"}>
+                                        {
+                                            <button 
+                                            className="btn btn-outline-primary btn-sm" 
+                                            title="Inscripción" 
+                                            onClick={() => {
+                                                solicitarInscripcion(project._id, userData._id)
+                                            }}
+                                            >Inscribirme</button>
+                                        }
+                                        </PrivateComponent>
+
                                     </td>
                                 </tr>
                             )

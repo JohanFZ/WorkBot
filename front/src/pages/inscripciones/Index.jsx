@@ -9,8 +9,16 @@ import { InputSearch } from 'components/InputSearch';
 import { Link } from 'react-router-dom'
 import {FaCheck,   FaTimes  } from 'react-icons/fa';
 import { SpinnerLoading } from 'components/Spinner';
+import { useUser } from 'context/userContext';
+
 
 const IndexInscripciones = () => {
+  const { userData } = useUser();
+  let lider = null 
+  if(userData.rol === "LIDER"){
+    lider = userData._id;
+  }
+  
   const { data:dataQueryInscripciones, 
     loading:loadingQueryInscripciones, 
     error:errorQueryInscripciones, 
@@ -29,6 +37,12 @@ const IndexInscripciones = () => {
 
   useEffect(() => {
     console.log(dataQueryInscripciones);
+ //   if(lider){
+  //    dataQueryInscripciones = dataQueryInscripciones.proyecto.lider.filter ((lider) => {
+  //      console.log(lider)
+  //    })
+  //  }
+
   }, [dataQueryInscripciones]);
 
   useEffect(() => {
