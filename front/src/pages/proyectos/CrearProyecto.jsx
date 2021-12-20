@@ -13,6 +13,7 @@ import { nanoid } from "nanoid";
 import { ObjContext, useObj } from 'context/objContext';
 import { useUser } from 'context/userContext';
 import { toast } from 'react-toastify';
+import { Link } from "react-router-dom";
 
 
 function CrearProyecto() {
@@ -29,35 +30,22 @@ function CrearProyecto() {
     } = useQuery(GET_USUARIOS);
 
     useEffect(() => {
-        if (mutationData) {
-            toast.success("Proyecto creado");
-        }
-        console.log("data mutation", mutationData)
-    }, [mutationData]);
-
-    useEffect(() => {
-        if (mutationError) {
-            console.log("Error registrando proyecto", mutationError);
-        }
-    }, [mutationError]);
-
-    useEffect(() => {
         console.log(userData.rol, userData.nombre, userData.apellido)
         const usersList = {};
-        if(userData.rol === "LIDER"){
+        if (userData.rol === "LIDER") {
             // console.log("entro")
             usersList[userData._id] = userData.nombre + " " + userData.apellido;
             setUsers(usersList);
-        }else{
+        } else {
 
             if (dataQuery) {
                 const dataQueryFiltered = dataQuery.Users.filter((user) => {
                     return ((user.rol === "ADMINISTRADOR" || user.rol === "LIDER") && user.estado === "AUTORIZADO")
                 });
-    
+
                 // console.log("Datos de la consulta", dataQuery);
                 // console.log(dataQueryFiltered);
-    
+
                 dataQueryFiltered.forEach((element) => {
                     usersList[element._id] = element.nombre + " " + element.apellido;
                 });
@@ -104,7 +92,10 @@ function CrearProyecto() {
 
     return (
         <div className='content-edit'>
-            <h1 className='title'>Crear proyecto</h1>
+            <Link to={`/`}>
+                <i className='fas fa-arrow-left back' />
+            </Link>
+            <h1 className='title'>Crear Proyecto</h1>
             <form
                 style={{
                     fontFamily: 'Readex Pro',
@@ -218,7 +209,7 @@ const Objetivos = () => {
     useEffect(() => {
         if (objectiveList.length > 4) {
             setMaxObj(true);
-        }else{
+        } else {
             setMaxObj(false);
         }
     }, [objectiveList]);
@@ -229,14 +220,14 @@ const Objetivos = () => {
             <div>
                 {!maxObj && (
 
-                        <Button outline color="success"
-                            style={{ marginLeft: "2px" }}
-                            onClick={addF}
-                            title='Agregar objetivo especifico'
-                        >
-                            Agregar objetivo especifico
-                        </Button>
-                    )}
+                    <Button outline color="success"
+                        style={{ marginLeft: "2px" }}
+                        onClick={addF}
+                        title='Agregar objetivo especifico'
+                    >
+                        Agregar objetivo especifico
+                    </Button>
+                )}
 
                 {
                     objectiveList.map((objective) => {

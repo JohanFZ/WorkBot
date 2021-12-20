@@ -13,14 +13,14 @@ import { useUser } from 'context/userContext';
 
 function IndexProyecto() {
     const { userData } = useUser();
-   
+
     const { data, error, loading } = useQuery(GET_PROJECTS);
     const [, forceUpdate] = useReducer(x => x + 1, 0);
 
-    const [crearInscripcion, 
-        { data:dataMutatationCrear, 
-          loading:loadingMutatationCrear, 
-          error:errorMutatationCrear}] = useMutation(CREAR_INSCRIPCION);
+    const [crearInscripcion,
+        { data: dataMutatationCrear,
+            loading: loadingMutatationCrear,
+            error: errorMutatationCrear }] = useMutation(CREAR_INSCRIPCION);
 
     useEffect(() => {
         forceUpdate();
@@ -28,7 +28,7 @@ function IndexProyecto() {
     }, [data]);
 
     useEffect(() => {
-          toast.success("Inscripción Solicitada");
+        toast.success("Inscripción Solicitada");
     }, dataMutatationCrear);
 
     useEffect(() => {
@@ -55,14 +55,16 @@ function IndexProyecto() {
                 estado: "PENDIENTE",
             },
         });
-      };
+    };
 
-    
+
     return (
-        <div>
-            
+        <div className='content-edit'>
+            <Link to={`/`}>
+                <i className='fas fa-arrow-left back' />
+            </Link>
             <div className="title">
-                <label>Lista de proyectos</label>
+                <label>Lista de Proyectos</label>
             </div>
 
             <Table>
@@ -84,7 +86,7 @@ function IndexProyecto() {
                 </thead>
                 <tbody>
                     {
-                        data && data.Proyecto.map((project,index) => {
+                        data && data.Proyecto.map((project, index) => {
                             return (
                                 <tr key={index}>
                                     <td>{project.nombre}</td>
@@ -95,9 +97,9 @@ function IndexProyecto() {
                                     <td>{project.estado}</td>
                                     <td>
                                         <Button outline color="primary">
-                                            <Link 
-                                            to={`/proyectos/listaObjetivos/${project._id}`}
-                                            style={{color: "black", textDecoration:"none"}}
+                                            <Link
+                                                to={`/proyectos/listaObjetivos/${project._id}`}
+                                                style={{ color: "black", textDecoration: "none" }}
                                             >
                                                 Ver detalle
                                             </Link>
@@ -105,25 +107,25 @@ function IndexProyecto() {
                                     </td>
                                     <td>
                                         <PrivateComponent roleList={["ADMINISTRADOR", "LIDER"]}>
-                                        <Button outline color="primary">
-                                            <Link 
-                                            to={`/proyectos/editar/${project._id}`}
-                                            style={{color: "black", textDecoration:"none"}}
-                                            >
-                                                Editar
-                                            </Link>
-                                        </Button>
+                                            <Button outline color="primary">
+                                                <Link
+                                                    to={`/proyectos/editar/${project._id}`}
+                                                    style={{ color: "black", textDecoration: "none" }}
+                                                >
+                                                    Editar
+                                                </Link>
+                                            </Button>
                                         </PrivateComponent>
                                         <PrivateComponent roleList={"ESTUDIANTE"}>
-                                        {
-                                            <button 
-                                            className="btn btn-outline-primary btn-sm" 
-                                            title="Inscripción" 
-                                            onClick={() => {
-                                                solicitarInscripcion(project._id, userData._id)
-                                            }}
-                                            >Inscribirme</button>
-                                        }
+                                            {
+                                                <button
+                                                    className="btn btn-outline-primary btn-sm"
+                                                    title="Inscripción"
+                                                    onClick={() => {
+                                                        solicitarInscripcion(project._id, userData._id)
+                                                    }}
+                                                >Inscribirme</button>
+                                            }
                                         </PrivateComponent>
 
                                     </td>

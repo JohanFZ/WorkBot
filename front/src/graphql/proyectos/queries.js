@@ -28,9 +28,17 @@ const GET_PROJECT = gql`
 query Proyecto($_id: String!){
   ProyectoUnico(id: $_id) {
     _id
+    nombre
+    fase
+    estado
     fechaInicio
     fechaFin
     presupuesto
+    lider {
+      nombre
+      apellido
+      correo
+    }
     objetivos {
       descripcion
       tipo

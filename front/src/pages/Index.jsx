@@ -81,7 +81,7 @@ const Index = () => {
                     <div></div>
                   <p>
                     <Button color='primary'>
-                      <Link to={`/proyectos/${u._id}`} style={{ color: "white", textDecoration: "none" }}>
+                      <Link to={`/avance/proyecto/${u._id}`} style={{ color: "white", textDecoration: "none" }}>
                         Ver Detalles
                       </Link>
                     </Button>
@@ -135,7 +135,7 @@ const Index = () => {
                       <div></div>
                       <p>
                         <Button color='primary'>
-                          <Link to={`/proyecto/${u.proyecto._id}`} style={{ color: "white", textDecoration: "none" }}>
+                          <Link to={`/avance/proyecto/${u.proyecto._id}`} style={{ color: "white", textDecoration: "none" }}>
                             Ver Detalles
                           </Link>
                         </Button>

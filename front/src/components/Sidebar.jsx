@@ -63,10 +63,6 @@ const Sidebar = () => {
               <Link to="/proyectos" />
             </MenuItem>
           </SubMenu>
-          <SubMenu title='Avances' icon={<FaProjectDiagram />}>
-            <MenuItem>Crear Avances</MenuItem>
-            <MenuItem>Listar Avances</MenuItem>
-          </SubMenu>
           <PrivateComponent roleList={['ADMINISTRADOR', 'LIDER']}>
             <SubMenu title='Inscripciones' icon={<FaAddressBook />}>
               <MenuItem>

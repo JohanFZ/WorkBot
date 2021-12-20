@@ -60,13 +60,13 @@ function EditarProyectos() {
         });
         toast.success("Proyecto editado");
         // navigate("/proyectos");
-        
+
     };
 
 
     return (
         <div className='content-edit'>
-            <Button color="withe"onClick={() =>{window.location.reload(false)}}>
+            <Button color="white" onClick={() =>{window.location.reload(false)}}>
                 <Link to={`/proyectos`}>
                 <i className='fas fa-arrow-left back' />
                 </Link>
@@ -85,6 +85,7 @@ function EditarProyectos() {
                         name="nombre"
                         defaultValue={queryData.ProyectoUnico.nombre}
                         required={true}
+                        readOnly={true}
                     />
 
                     <InputGlobal
@@ -93,6 +94,7 @@ function EditarProyectos() {
                         name="presupuesto"
                         defaultValue={queryData.ProyectoUnico.presupuesto}
                         required={true}
+                        readOnly={true}
                     />
                 </div>
                 <div>
