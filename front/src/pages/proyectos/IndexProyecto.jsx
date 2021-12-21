@@ -28,7 +28,10 @@ function IndexProyecto() {
     }, [data]);
 
     useEffect(() => {
-        toast.success("Inscripción Solicitada");
+        if(dataMutatationCrear){
+            toast.success("Inscripción Solicitada");
+            console.log("dataMutatationCrear: ",dataMutatationCrear)
+        }
     }, dataMutatationCrear);
 
     useEffect(() => {
@@ -123,13 +126,17 @@ function IndexProyecto() {
                                         </PrivateComponent>
                                         <PrivateComponent roleList={"ESTUDIANTE"}>
                                             {
-                                                <button
+                                                ( project.estado === "ACTIVO") && (
+                                                    <button
                                                     className="btn btn-outline-primary btn-sm"
                                                     title="Inscripción"
                                                     onClick={() => {
                                                         solicitarInscripcion(project._id, userData._id)
                                                     }}
                                                 >Inscribirme</button>
+                                                )
+
+
                                             }
                                         </PrivateComponent>
 
