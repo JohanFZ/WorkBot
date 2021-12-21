@@ -6,9 +6,22 @@ const typesAdvancements= gql`
     _id: ID
     fecha: Date!
     descripcion: String!
-    observaciones: [String]
+    observaciones: [Observacion]
     creadoPor: User!
     proyecto: Proyecto!
+  }
+
+  type Observacion{
+    _id: ID!
+    descripcion: String!
+  }
+
+  input crearObservacion{
+    descripcion: String!
+  }
+
+  input camposObservacion{
+    descripcion: String!
   }
 
   type Query {
@@ -22,7 +35,7 @@ const typesAdvancements= gql`
     crearAvance(
       fecha: Date!
       descripcion: String!
-      observaciones: [String]
+      observaciones: [crearObservacion]
       creadoPor: String!
       proyecto: String!
     ):Advancement
@@ -32,6 +45,12 @@ const typesAdvancements= gql`
     editarAvance(
       _id: String!,
       descripcion: String!
+    ):Advancement
+
+    editarObservacion(
+      _id: String!
+      indexObservacion: Int!
+      observacion:camposObservacion!
     ):Advancement
 
   }

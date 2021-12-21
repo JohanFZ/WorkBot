@@ -21,7 +21,10 @@ const advancementSchema = new Schema<Advance>({
   },
   observaciones: [
     {
-    type: String,
+      descripcion: {
+        type: String,
+        required: true
+      },
     }
   ],
   proyecto: {

@@ -46,6 +46,20 @@ const resolversAdvancement = {
 
       return avanceEditado;
     },
+    editarObservacion: async (parent, args) =>{
+      const advanceEditado = await advancementModel.findByIdAndUpdate(
+        args._id,
+        {
+          $set:{
+            [`observaciones.${args.indexObservacion}.descripcion`]: args.observacion.descripcion,
+          }
+      },
+      {new: true});
+      // console.log(args._id, args.indexObservacion);
+      // console.log(args.observacion.descripcion);
+      // console.log(advanceEditado);
+      return advanceEditado;
+    },
   }
 }
 
