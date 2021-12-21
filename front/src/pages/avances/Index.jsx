@@ -12,6 +12,7 @@ import { GET_AVANCES } from 'graphql/avances/queries';
 import { Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 import InputGlobal from 'components/InputGlobal';
 import useFormData from 'hooks/useFormData';
+import { EDITAR_DESCRIPTION } from 'graphql/avances/mutations';
 
 const IndexAvances = () => {
 
@@ -152,6 +153,9 @@ const IndexAvances = () => {
             <th>Fecha del Avance</th>
             <th>Descripción</th>
             <th>Observaciones</th>
+            <PrivateComponent roleList={["ESTUDIANTE"]}>
+              <th>Opciones</th>
+            </PrivateComponent>
           </tr>
         </thead>
         <tbody style={{ fontSize: "15px" }}>
@@ -176,6 +180,17 @@ const IndexAvances = () => {
                         Crear Observación
                       </Button>
                     </PrivateComponent>
+                  </td>
+                  <td>
+                    {userData._id === a.creadoPor._id ?
+                      <PrivateComponent roleList={["ESTUDIANTE"]}>
+                        <Link to={`/avance/editar/descripcion/${a._id}`}>
+                          <Button outline color="primary">
+                            Editar Descripción de Avance
+                          </Button>
+                        </Link>
+                      </PrivateComponent> : <br />
+                    }
                   </td>
                 </tr>
               )
