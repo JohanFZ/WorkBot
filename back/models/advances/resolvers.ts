@@ -39,11 +39,7 @@ const resolversAdvancement = {
     },
     editarAvance: async (parent, args) => {
       const avanceEditado = await advancementModel.findByIdAndUpdate(args._id, {
-        fecha: args.fecha,
         descripcion: args.descripcion,
-        observaciones: args.observaciones,
-        creadoPor: args.creadoPor,
-        proyecto: args.proyecto
       },
         { new: true }
       );

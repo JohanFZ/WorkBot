@@ -31,11 +31,7 @@ const typesAdvancements= gql`
 
     editarAvance(
       _id: String!,
-      fecha: Date!
       descripcion: String!
-      observaciones: [String]
-      creadoPor: String!
-      proyecto: String!
     ):Advancement
 
   }

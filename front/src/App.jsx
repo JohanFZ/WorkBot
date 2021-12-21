@@ -41,6 +41,7 @@ import 'styles/spinner.css'
 import Perfil from 'pages/usuarios/Perfil';
 import EditarPass from 'pages/usuarios/EditarPass';
 import IndexAvances from './pages/avances/Index';
+import EditarDescripcion from 'pages/avances/EditarDescripcion';
 
 const httpLink = createHttpLink({
   //uri: "https://server-back-workbot.herokuapp.com/graphql"
@@ -110,6 +111,7 @@ function App() {
                 <Route path="/profile/:_id" element={<Perfil />} />
                 <Route path="/change-password/:_id" element={<EditarPass />} />
                 <Route path="/avance/proyecto/:_id" element={<IndexAvances />} />
+                <Route path="/avance/editar/descripcion/:_id" element={<EditarDescripcion />} />
               </Route>
               <Route path="/auth" element={<AuthLayout />}>
                 <Route path='register' element={<Register />} />
