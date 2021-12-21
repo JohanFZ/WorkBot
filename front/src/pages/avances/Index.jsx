@@ -19,6 +19,7 @@ const IndexAvances = () => {
   const { userData } = useUser();
   const { _id } = useParams();
   const proyecto = _id;
+  const [idAvance, setIdAvance] = useState(null);
   const [estado, setEstado] = useState(false);
   const [estadoCrear, setEstadoCrear] = useState(false);
   const [formu, setForm] = useState([]);
@@ -50,6 +51,7 @@ const IndexAvances = () => {
   };
 
   const abrirModal = (data) => {
+    // console.log(data[1]);
     setForm(data);
     setEstado(!estado);
   }
@@ -169,7 +171,7 @@ const IndexAvances = () => {
                   <td>{a.descripcion}</td>
                   <td style={{ display: "flex" }}>
                     <Button onClick={() => {
-                      abrirModal(a.observaciones);
+                      abrirModal([a.observaciones, a._id]);
                     }} outline color="primary" style={{ margin: "10px", width: "130px" }}>
                       Ver Observaciones
                     </Button>
@@ -202,11 +204,18 @@ const IndexAvances = () => {
         <ModalHeader>Observaciones</ModalHeader>
         <ModalBody>
           {
-            formu && formu.map((o, i) => {
+            formu[0] && formu[0].map((o, i) => {
               return (
                 <div>
-                  <p className='label'>Observacion #{i + 1}</p>
-                  <p className='label' style={{ fontWeight: "300" }} key={i}>{o}</p>
+                  <p className='label'>Observacion #{i + 1 + " "}</p>
+                  <div style={{display:"flex", marginBottom:"20px"}}>
+                    <p className='label' style={{ fontWeight: "300", marginRight:"100px" }} key={i}>{o.descripcion}</p>
+                    <Link to={`/avance/editar/observacion/${formu[1]}/${o.descripcion}/${i}`}>
+                      <Button outline color="primary">
+                        Editar Observacion
+                      </Button>
+                    </Link>
+                  </div>
                 </div>
               )
             })

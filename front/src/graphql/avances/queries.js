@@ -6,7 +6,9 @@ query AdvancesProject($proyecto: String) {
       _id
       descripcion
       fecha
-      observaciones
+      observaciones{
+        descripcion
+      }
       creadoPor {
         _id
         nombre

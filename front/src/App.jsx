@@ -42,10 +42,11 @@ import Perfil from 'pages/usuarios/Perfil';
 import EditarPass from 'pages/usuarios/EditarPass';
 import IndexAvances from './pages/avances/Index';
 import EditarDescripcion from 'pages/avances/EditarDescripcion';
+import EditarObservacion from 'pages/avances/EditarObservacion';
 
 const httpLink = createHttpLink({
   uri: "https://server-back-workbot.herokuapp.com/graphql"
-   //uri: "http://localhost:4000/graphql"
+  //  uri: "http://localhost:4000/graphql"
 });
 
 const authLink = setContext((_, { headers }) => {
@@ -112,6 +113,7 @@ function App() {
                 <Route path="/change-password/:_id" element={<EditarPass />} />
                 <Route path="/avance/proyecto/:_id" element={<IndexAvances />} />
                 <Route path="/avance/editar/descripcion/:_id" element={<EditarDescripcion />} />
+                <Route path="/avance/editar/observacion/:id/:observacion/:indexObservacion" element={<EditarObservacion />} />
               </Route>
               <Route path="/auth" element={<AuthLayout />}>
                 <Route path='register' element={<Register />} />
