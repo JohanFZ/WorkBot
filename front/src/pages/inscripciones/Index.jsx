@@ -124,33 +124,41 @@ const IndexInscripciones = () => {
       <tbody>
         {dataQueryInscripciones && dataQueryInscripciones.Inscripciones.map((u) => {
           return (
-            <tr key={u._id}>
-              <td>{u.estado}</td>
-              <td>{u.fechaIngreso}</td>
-              <td>{u.fechaEgreso}</td>
-              <td>{u.proyecto.nombre}</td>
-              <td>{u.estudiante.nombre + " " + u.estudiante.apellido}</td>
-              <td>
-              {                                           
-                <button 
-                  className="btn btn-outline-primary btn-sm" 
-                  title="Aceptar" 
+            
+              ((userData.rol === "LIDER" && u.proyecto.lider._id === userData._id) || userData.rol === "ADMINISTRADOR") && (
+                <tr key={u._id}>
+                <td>{u.estado}</td>
+                <td>{u.fechaIngreso}</td>
+                <td>{u.fechaEgreso}</td>
+                <td>{u.proyecto.nombre}</td>
+                <td>{u.estudiante.nombre + " " + u.estudiante.apellido}</td>
+                <td>
+                {                                           
+                  <button 
+                    className="btn btn-outline-primary btn-sm" 
+                    title="Aceptar" 
+                    onClick={() => {
+                      cambiarEstadoInscripcion(u,"APROBAR");
+                    }}
+                  >{<FaCheck />}</button>
+                }
+                {
+                  <button 
+                  className="btn btn-outline-danger btn-sm" 
+                  title="Rechazar" 
                   onClick={() => {
-                    cambiarEstadoInscripcion(u,"APROBAR");
+                    cambiarEstadoInscripcion(u,"RECHAZAR");
                   }}
-                >{<FaCheck />}</button>
-              }
-              {
-                <button 
-                className="btn btn-outline-danger btn-sm" 
-                title="Rechazar" 
-                onClick={() => {
-                  cambiarEstadoInscripcion(u,"RECHAZAR");
-                }}
-                >{<FaTimes />}</button>
-              }
-              </td>
-            </tr>
+                  >{<FaTimes />}</button>
+                }
+                </td>
+              </tr>
+
+              )
+          
+
+
+
           )
         })
 

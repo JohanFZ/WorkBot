@@ -66,10 +66,6 @@ const Sidebar = () => {
           <PrivateComponent roleList={['ADMINISTRADOR', 'LIDER']}>
             <SubMenu title='Inscripciones' icon={<FaAddressBook />}>
               <MenuItem>
-                Crear Inscripciones
-                <Link to="/inscripciones" />
-              </MenuItem>
-              <MenuItem>
                 Listar Inscripciones
                 <Link to="/inscripciones" />
               </MenuItem>
