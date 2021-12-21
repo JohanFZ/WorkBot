@@ -53,13 +53,20 @@ function EditarProyectos() {
 
     const submitForm = (event) => {
         event.preventDefault();
-        // console.log("Datos form", formData);
-        formData.presupuesto = parseFloat(formData.presupuesto);
-        editPro({
-            variables: { _id, camposPro: { ...formData } }
-        });
-        toast.success("Proyecto editado");
-        // navigate("/proyectos");
+        console.log("Datos form", formData);
+
+        if (formData.estado === "INACTIVO" && (formData.fase === "DESARROLLO" || formData.fase === "INICIADO")){
+            toast.error("Un proyecto INACTIVO solo puede tener fase TERMINADO");
+        }else if(formData.estado === "ACTIVO" && formData.fase === "TERMINADO"){
+            toast.error("Un proyecto ACTIVO NO puede tener fase TERMINADO");
+        }else{
+            formData.presupuesto = parseFloat(formData.presupuesto);
+            editPro({
+                variables: { _id, camposPro: { ...formData } }
+            });
+            toast.success("Proyecto editado");
+            // navigate("/proyectos");            
+        }
 
     };
 
