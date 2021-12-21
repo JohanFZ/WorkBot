@@ -25,6 +25,9 @@ const typesInscripcion = gql`
     rechazarInscripcion(
       id: String!
     ): Inscripcion
+    culminarInscripcion(
+      proyecto: String!
+    ): Inscripcion
   }
 `;
 

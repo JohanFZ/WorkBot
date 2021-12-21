@@ -133,24 +133,25 @@ const IndexInscripciones = () => {
                 <td>{u.proyecto.nombre}</td>
                 <td>{u.estudiante.nombre + " " + u.estudiante.apellido}</td>
                 <td>
-                {                                           
-                  <button 
-                    className="btn btn-outline-primary btn-sm" 
-                    title="Aceptar" 
-                    onClick={() => {
-                      cambiarEstadoInscripcion(u,"APROBAR");
-                    }}
-                  >{<FaCheck />}</button>
+                {     
+                    <button 
+                      className="btn btn-outline-primary btn-sm" 
+                      title="Aceptar" 
+                      onClick={() => {
+                        cambiarEstadoInscripcion(u,"APROBAR");
+                      }}
+                    >{<FaCheck />}</button>
+                }{
+                    <button 
+                      className="btn btn-outline-danger btn-sm" 
+                      title="Rechazar" 
+                      onClick={() => {
+                        cambiarEstadoInscripcion(u,"RECHAZAR");
+                      }}
+                    >{<FaTimes />}</button>
                 }
-                {
-                  <button 
-                  className="btn btn-outline-danger btn-sm" 
-                  title="Rechazar" 
-                  onClick={() => {
-                    cambiarEstadoInscripcion(u,"RECHAZAR");
-                  }}
-                  >{<FaTimes />}</button>
-                }
+                
+                
                 </td>
               </tr>
 

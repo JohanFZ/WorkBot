@@ -8,6 +8,7 @@ import { SpinnerLoading } from "components/Spinner";
 import { useQuery, useMutation } from "@apollo/client";
 import { GET_PROJECTEDIT } from "graphql/proyectos/queries";
 import { EDIT_PROJECT } from 'graphql/proyectos/mutations';
+import { CULMINAR_INSCRIPCION } from 'graphql/inscripciones/mutaciones';
 import { toast } from 'react-toastify';
 import useFormData from 'hooks/useFormData';
 import { Enum_EstadoProyecto, Enum_FaseProyecto } from "utils/enum";
@@ -23,6 +24,12 @@ function EditarProyectos() {
     } = useQuery(GET_PROJECTEDIT, {
         variables: { _id }
     });
+
+    const [culminarInscripcion, 
+        { data:dataMutatationCulminar, 
+          loading:loadingMutatationCulminar, 
+          error:errorMutatationCulminar}] = useMutation(CULMINAR_INSCRIPCION);
+
     const { form, formData, updateFormData } = useFormData(null);
     const [editPro,
         {
@@ -53,13 +60,24 @@ function EditarProyectos() {
 
     const submitForm = (event) => {
         event.preventDefault();
-        console.log("Datos form", formData);
-
+        console.log("Datos form",  _id );
+        console.log("type", typeof( _id));
+        
         if (formData.estado === "INACTIVO" && (formData.fase === "DESARROLLO" || formData.fase === "INICIADO")){
             toast.error("Un proyecto INACTIVO solo puede tener fase TERMINADO");
         }else if(formData.estado === "ACTIVO" && formData.fase === "TERMINADO"){
             toast.error("Un proyecto ACTIVO NO puede tener fase TERMINADO");
         }else{
+
+            //console.log("queryData.ProyectoUnico._id ",queryData.ProyectoUnico._id);
+
+           if(formData.fase === "TERMINADO"){
+               culminarInscripcion({
+                   variables: {
+                     proyecto: _id ,
+                   },
+                 });
+            }
             formData.presupuesto = parseFloat(formData.presupuesto);
             editPro({
                 variables: { _id, camposPro: { ...formData } }

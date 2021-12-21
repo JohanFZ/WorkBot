@@ -43,8 +43,8 @@ import EditarPass from 'pages/usuarios/EditarPass';
 import IndexAvances from './pages/avances/Index';
 
 const httpLink = createHttpLink({
-  uri: "https://server-back-workbot.herokuapp.com/graphql"
-  // uri: "http://localhost:4000/graphql"
+  //uri: "https://server-back-workbot.herokuapp.com/graphql"
+   uri: "http://localhost:4000/graphql"
 });
 
 const authLink = setContext((_, { headers }) => {

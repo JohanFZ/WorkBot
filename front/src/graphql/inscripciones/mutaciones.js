@@ -23,6 +23,15 @@ const RECHAZAR_INSCRIPCION = gql`
     }
   }
 `;
+const CULMINAR_INSCRIPCION = gql`
+  mutation CulminarInscripcion($proyecto: String!) {
+    culminarInscripcion(proyecto: $proyecto) {
+      _id
+    }
+  }
+`;
 
 
-export { CREAR_INSCRIPCION, APROBAR_INSCRIPCION, RECHAZAR_INSCRIPCION };
+
+
+export { CREAR_INSCRIPCION, APROBAR_INSCRIPCION, RECHAZAR_INSCRIPCION, CULMINAR_INSCRIPCION };

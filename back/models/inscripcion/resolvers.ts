@@ -42,7 +42,19 @@ const resolverInscripciones = {
         { new: true }
       );
       return inscripcionAprobada;
-    }
+    },
+    culminarInscripcion: async (parent, args) => {
+      const inscripcionFinalizada = await InscriptionModel.updateMany(
+        {
+          proyecto:args.proyecto
+        },
+        {
+          fechaEgreso: new Date,
+        },
+        { new: true }
+      );
+      return inscripcionFinalizada;
+    },
   },
 };
 
