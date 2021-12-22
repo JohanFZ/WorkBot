@@ -43,6 +43,7 @@ import EditarPass from 'pages/usuarios/EditarPass';
 import IndexAvances from './pages/avances/Index';
 import EditarDescripcion from 'pages/avances/EditarDescripcion';
 import EditarObservacion from 'pages/avances/EditarObservacion';
+import CrearAvance from 'pages/avances/CrearAvances';
 
 const httpLink = createHttpLink({
   uri: "https://server-back-workbot.herokuapp.com/graphql"
@@ -103,19 +104,26 @@ function App() {
                 <Route path='/usuarios' element={<IndexUsuarios />} />
                 <Route path='/usuarios/editar/:_id' element={<EditarUsuario />} />
                 <Route path='/inscripciones' element={<IndexInscripciones />} />
-                <Route path="/proyectos" element={<IndexProyecto />} />
-                <Route path="/proyectos/listaObjetivos/:_id" element={<ListarObjetivos />} />
-                <Route path="/proyectos/editarObjetivos/:id/:indexObjetivo/:tipo/:descripcion" element={<EditarObjetivo />} />
-                <Route path="/proyectos/agregarObjetivo/:id" element={<AgregarObjetivo />} />
-                <Route path="/proyectos/editar/:_id" element={<EditarProyectos />} />
-                <Route path="/proyectos/crear" element={<CrearProyecto />} />
-                <Route path="/profile/:_id" element={<Perfil />} />
-                <Route path="/change-password/:_id" element={<EditarPass />} />
-                <Route path="/avance/proyecto/:_id" element={<IndexAvances />} />
-                <Route path="/avance/editar/descripcion/:_id" element={<EditarDescripcion />} />
-                <Route path="/avance/editar/observacion/:id/:observacion/:indexObservacion" element={<EditarObservacion />} />
+                <Route path='/proyectos' element={<IndexProyecto />} />
+                <Route path='/proyectos/listaObjetivos/:_id' element={<ListarObjetivos />} />
+                <Route
+                  path='/proyectos/editarObjetivos/:id/:indexObjetivo/:tipo/:descripcion'
+                  element={<EditarObjetivo />}
+                />
+                <Route path='/proyectos/agregarObjetivo/:id' element={<AgregarObjetivo />} />
+                <Route path='/proyectos/editar/:_id' element={<EditarProyectos />} />
+                <Route path='/proyectos/crear' element={<CrearProyecto />} />
+                <Route path='/profile/:_id' element={<Perfil />} />
+                <Route path='/change-password/:_id' element={<EditarPass />} />
+                <Route path='/avance/proyecto/:_id' element={<IndexAvances />} />
+                <Route path='/avance/editar/descripcion/:_id' element={<EditarDescripcion />} />
+                <Route
+                  path='/avance/editar/observacion/:id/:observacion/:indexObservacion'
+                  element={<EditarObservacion />}
+                />
+                <Route path='/crear/avances/:_id' element={<CrearAvance />} />
               </Route>
-              <Route path="/auth" element={<AuthLayout />}>
+              <Route path='/auth' element={<AuthLayout />}>
                 <Route path='register' element={<Register />} />
                 <Route path='login' element={<Login />} />
               </Route>
