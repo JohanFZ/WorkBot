@@ -12,8 +12,8 @@ const typesAdvancements= gql`
   }
 
   type Observacion{
-    _id: ID!
-    descripcion: String!
+    _id: ID
+    descripcion: String
   }
 
   input crearObservacion{

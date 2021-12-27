@@ -58,10 +58,7 @@ const IndexAvances = () => {
 
   useEffect(() => {
     if (dataQuery) {
-      console.log(dataQuery.AdvancesProject.observaciones);
-    }
-    if (form) {
-      console.log(form);
+      console.log("Avances",dataQuery.AdvancesProject);
     }
     if (queryError) {
       toast.error("Error consultando el Proyecto");
@@ -200,7 +197,7 @@ const IndexAvances = () => {
           }
         </tbody>
       </Table>
-      <Modal isOpen={estado}>
+      {/* <Modal isOpen={estado}>
         <ModalHeader>Observaciones</ModalHeader>
         <ModalBody>
           {
@@ -228,7 +225,7 @@ const IndexAvances = () => {
             Salir
           </Button>
         </ModalFooter>
-      </Modal>
+      </Modal> */}
 
       <Modal isOpen={estadoCrear}>
         <ModalHeader>Crear observación</ModalHeader>
